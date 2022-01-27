@@ -30,8 +30,20 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\Components\Menu.tsx" />
+    <None Remove="ClientApp\src\Components\MenuItem.tsx" />
+    <None Remove="ClientApp\src\Components\Menu\index.ts" />
+    <None Remove="ClientApp\src\Interfaces\Components\IMenu.ts" />
+    <None Remove="ClientApp\src\Interfaces\Components\index.ts" />
+    <None Remove="ClientApp\src\Interfaces\Components\Menu\IMenuItem.ts" />
+    <None Remove="ClientApp\src\Interfaces\Components\Menu\index.ts" />
+    <None Remove="ClientApp\src\Interfaces\index.ts" />
+    <None Remove="ClientApp\src\Interfaces\Layers\ILayer.ts" />
+    <None Remove="ClientApp\src\Interfaces\Layers\index.ts" />
     <None Remove="ClientApp\src\Interfaces\Screens\IMap.ts" />
+    <None Remove="ClientApp\src\Interfaces\Screens\index.ts" />
     <None Remove="ClientApp\src\Screens\DWMap.tsx" />
+    <None Remove="ClientApp\src\Styles\Components\index.ts" />
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

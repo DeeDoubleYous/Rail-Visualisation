@@ -1,5 +1,6 @@
-﻿import { ReactElement } from 'react';
+﻿import { Layer } from 'maptalks';
 
 export interface IMap {
-    className: string
+    layers: Layer[],
+    className?: string
 }

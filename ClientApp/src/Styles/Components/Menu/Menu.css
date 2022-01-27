@@ -1,0 +1,17 @@
+﻿#menu{
+    width: 20%;
+    height: 60%;
+    z-index: 2;
+    background: var(--main);
+    position: absolute;
+    left: 0.05%;
+    top: 0.6%;
+    overflow-y: scroll;
+}
+
+.menuItem{
+    border-bottom: solid black 0.1rem;
+    background: var(--main);
+    height: 10%;
+    /*color: var(--secondary);*/
+}
