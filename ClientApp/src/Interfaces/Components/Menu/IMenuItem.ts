@@ -1,5 +1,7 @@
 ﻿import { ILayer } from '../../';
 
 export interface IMenuItem extends ILayer{
-    itemTitle: string
+    itemTitle: string,
+    primaryAction?: () => void,
+    secondaryAction?:() => void,
 }
