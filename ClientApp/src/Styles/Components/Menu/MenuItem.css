@@ -1,0 +1,38 @@
+﻿.menuItem {
+    border-bottom: solid black 0.1rem;
+    background: var(--main);
+    height: 10%;
+    overflow: hidden;
+
+    display: grid;
+    grid-template-areas: 'title addLayer';
+    grid-template-columns: 85% 15%;
+
+}
+
+.itemTitle {
+    grid-area: title;
+}
+
+.addLayer {
+    position: relative;
+    grid-area: addLayer;
+    background:none;
+    color: black;
+    height: 100%;
+    /*width: 100%;*/
+    border: none;
+    cursor: pointer;
+}
+
+.addLayer:active{
+    transition: 0.1s;
+    color: white;
+}
+/*
+.addLayerIcon{
+   
+    background: none;
+    fill: green;
+}*/
+

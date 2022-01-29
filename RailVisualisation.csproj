@@ -35,6 +35,7 @@
     <None Remove="ClientApp\src\Components\Menu\index.ts" />
     <None Remove="ClientApp\src\Interfaces\Components\IMenu.ts" />
     <None Remove="ClientApp\src\Interfaces\Components\index.ts" />
+    <None Remove="ClientApp\src\Interfaces\Components\Menu\ILayerMenuItem.ts" />
     <None Remove="ClientApp\src\Interfaces\Components\Menu\IMenuItem.ts" />
     <None Remove="ClientApp\src\Interfaces\Components\Menu\index.ts" />
     <None Remove="ClientApp\src\Interfaces\index.ts" />

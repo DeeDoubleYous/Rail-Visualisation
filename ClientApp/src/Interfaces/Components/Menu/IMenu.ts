@@ -1,6 +1,7 @@
-﻿import { IMenuItem } from "./";
+﻿import { ReactElement } from 'react';
+import { IMenuItem } from "./";
 
 export interface IMenu {
     className: string,
-    layers: IMenuItem[]
+    items: ReactElement<IMenuItem>[],
 }
