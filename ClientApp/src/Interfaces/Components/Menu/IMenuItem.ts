@@ -1,6 +1,7 @@
 ﻿import { ILayer } from '../../';
 
-export interface IMenuItem extends ILayer{
+export interface IMenuItem{
+    className: string, 
     itemTitle: string,
     primaryAction?: () => void,
     secondaryAction?:() => void,

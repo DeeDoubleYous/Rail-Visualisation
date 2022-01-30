@@ -43,6 +43,8 @@
     <None Remove="ClientApp\src\Interfaces\Layers\index.ts" />
     <None Remove="ClientApp\src\Interfaces\Screens\IMap.ts" />
     <None Remove="ClientApp\src\Interfaces\Screens\index.ts" />
+    <None Remove="ClientApp\src\Layers\Routing\index.ts" />
+    <None Remove="ClientApp\src\Layers\Routing\Routing.tsx" />
     <None Remove="ClientApp\src\Screens\DWMap.tsx" />
     <None Remove="ClientApp\src\Styles\Components\index.ts" />
   </ItemGroup>

@@ -1,7 +1,9 @@
 ﻿import { Layer } from 'maptalks';
+import { ReactElement } from 'react';
 
 export interface ILayer {
-    className: string,
-    addLayer: (layer: Layer) => void,
-    removeLayer: (layer: Layer) => void
+    mapLayer: Layer,
+    removeLayer: () => void,
+    drawComponents: () => ReactElement,
+    getMapLayer: () => Layer
 }
