@@ -1,17 +1,24 @@
-﻿import { Layer, VectorLayer } from 'maptalks';
+﻿import { VectorLayer } from 'maptalks';
 import { ReactElement } from 'react';
 import { ILayer } from '../../Interfaces';
+import { RoutingComponent } from './RoutingComponent';
 
 export class Routing implements ILayer {
 
     mapLayer: VectorLayer;
 
-    constructor() {
+    className: string;
+    id: string;
+
+    constructor(className: string, id: string) {
         this.mapLayer = this.contructMapLayer();
+
+        this.className = className;
+        this.id = id;
     }
 
     private contructMapLayer(): VectorLayer {
-        return new VectorLayer('routing');
+        return new VectorLayer(`routing${this.id}`);
     }
 
     removeLayer(): void {
@@ -20,14 +27,13 @@ export class Routing implements ILayer {
 
     drawComponents(): ReactElement {
         return (
-            <div>
-                <p>Hello world!</p>
-            </div>
+            <RoutingComponent/>
         );
     }
 
     getMapLayer(): VectorLayer {
         return this.mapLayer;
     }
+
 
 }

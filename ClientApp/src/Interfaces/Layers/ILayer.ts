@@ -3,6 +3,8 @@ import { ReactElement } from 'react';
 
 export interface ILayer {
     mapLayer: Layer,
+    className: string,
+    id: string,
     removeLayer: () => void,
     drawComponents: () => ReactElement,
     getMapLayer: () => Layer
