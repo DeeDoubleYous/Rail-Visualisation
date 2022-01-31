@@ -5,7 +5,9 @@ export interface ILayer {
     mapLayer: Layer,
     className: string,
     id: string,
+    layerTitle: string,
     removeLayer: () => void,
     drawComponents: () => ReactElement,
-    getMapLayer: () => Layer
+    getMapLayer: () => Layer,
+    getLayerTitle: () => string
 }

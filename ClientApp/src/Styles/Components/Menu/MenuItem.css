@@ -1,13 +1,14 @@
 ﻿.menuItem {
     border-bottom: solid black 0.1rem;
+    border-right: solid black 0.1rem;
     background: var(--main);
     height: 10%;
     overflow: hidden;
+    padding: 1%;
 
     display: grid;
     grid-template-areas: 'title addLayer';
     grid-template-columns: 85% 15%;
-
 }
 
 .itemTitle {

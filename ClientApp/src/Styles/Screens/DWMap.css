@@ -1,0 +1,22 @@
+﻿#map{
+    position: absolute;
+    left:0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1;
+}
+
+.activeLayerMenu {
+    position: absolute;
+    top: 35%;
+    width: 20%;
+}
+
+.layerMenu {
+    width: 20%;
+    max-height: 30%;
+    position: absolute;
+    left: 0.05%;
+    top: 0.6%;
+}

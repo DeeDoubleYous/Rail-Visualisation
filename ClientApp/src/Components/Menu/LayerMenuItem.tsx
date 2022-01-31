@@ -9,7 +9,9 @@ export const LayerMenuItem: FunctionComponent<IMenuItem> = (props): ReactElement
     return (
         <div className={`menuItem ${props.className}`}>
             <div className='itemTitle'>{props.itemTitle}</div>
-            <AddIcon className='addLayer' onClick={()=>console.log(props.className)}/>
+            {
+                props.primaryAction && <AddIcon className='addLayer' onClick={props.primaryAction}/>
+            }
         </div>
     );
 }

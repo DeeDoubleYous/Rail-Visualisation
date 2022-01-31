@@ -1,16 +1,17 @@
 ﻿import { FunctionComponent, ReactElement, useEffect, useState } from 'react';
 import * as Maptalks from 'maptalks';
 
-import { IMap } from '../Interfaces';
-import '../Styles/Screens/Map.css';
+import { IMap, ILayer } from '../Interfaces';
+import { LayerMenu, LayerMenuItem, Menu } from '../Components';
+import '../Styles/Screens/DWMap.css';
 
 const DWMap: FunctionComponent<IMap> = (props): ReactElement => {
     const [map, setMap] = useState<Maptalks.Map>();
-    const [activeLayers, setActiveLayers] = useState<Maptalks.Layer[]>([]);
+    const [activeLayer, setActiveLayer] = useState<ILayer | null>();
 
     useEffect(() => {
         const localMap = new Maptalks.Map('map', {
-            center: [ -0.113049, 51.498568],
+            center: [-0.119460, 50.844419],
             zoom: 13,
             minZoom: 3,
             baseLayer: new Maptalks.TileLayer('base', {
@@ -26,44 +27,41 @@ const DWMap: FunctionComponent<IMap> = (props): ReactElement => {
         });
         setMap(localMap);
 
-        props.layers.forEach(layer => {
-            map?.addLayer(layer);
-        });
-
-        setActiveLayers(props.layers);
-
         return () => {
             map?.remove();
         }
     }, []);
 
-    useEffect(() => {
-        if (props.layers.length > activeLayers.length) {
-            const difference = props.layers.length - activeLayers.length;
-            const newLayers = props.layers.splice(0, props.layers.length - difference);
-
-            newLayers.forEach(layer => {
-                map?.addLayer(layer);
-            });
-
-            setActiveLayers(props.layers);
-        } else if (props.layers.length < activeLayers.length) {
-            const difference = activeLayers.length - props.layers.length;
-            const removeLayers = activeLayers.splice(0, activeLayers.length - difference);
-
-            removeLayers.forEach(layer => {
-                map?.removeLayer(layer);
-            });
-            setActiveLayers(props.layers);
+    const addLayer = (layer: ILayer) => {
+        if (activeLayer) {
+            activeLayer.removeLayer();
         }
-    }, [props.layers]);
+        setActiveLayer(layer);
+        map?.addLayer(layer.getMapLayer())
+    };
 
-    if (map && props.layers) {
-        map.addLayer(props.layers);
-    }
+    const removeLayer = () => {
+        if (activeLayer) {
+            activeLayer.removeLayer();
+        }
+        setActiveLayer(null);
+    };
 
     return (
-        <div id='map'> </div>
+        <div className={props.className}>
+            <LayerMenu addLayer={addLayer} />
+            <div id='map'/>
+            {
+                activeLayer && activeLayer.drawComponents()
+            }
+            {
+                activeLayer && (
+                    <Menu className='activeLayerMenu' >
+                        <LayerMenuItem className={activeLayer.className} itemTitle={activeLayer.getLayerTitle()} primaryAction={removeLayer} />
+                    </Menu>
+                )
+            }
+        </div>
     );
 };
 

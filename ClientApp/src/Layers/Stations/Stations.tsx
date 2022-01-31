@@ -1,27 +1,26 @@
 ﻿import { VectorLayer, Marker } from 'maptalks';
 import { ReactElement } from 'react';
+
+import { RoutingComponent } from '../Routing';
 import { ILayer } from '../../Interfaces';
-import { RoutingComponent } from './RoutingComponent';
 
-import '../../Styles/Layers/Routing/Routing.css';
-
-export class Routing implements ILayer {
+export class Stations implements ILayer {
 
     mapLayer: VectorLayer;
 
     className: string;
     id: string;
-    layerTitle: string = 'Routing';
+    layerTitle: string = 'Stations';
 
     constructor(className: string, id: string) {
-        this.mapLayer = this.contructMapLayer();
-
         this.className = className;
         this.id = id;
+
+        this.mapLayer = this.contructMapLayer();
     }
 
     private contructMapLayer(): VectorLayer {
-        return new VectorLayer(`routing${this.id}`, new Marker([-0.119460, 50.844419]));
+        return new VectorLayer(`routing${this.id}`, new Marker([-0.11921, 50.84217])); 
     }
 
     removeLayer(): void {
@@ -30,7 +29,7 @@ export class Routing implements ILayer {
 
     drawComponents(): ReactElement {
         return (
-            <RoutingComponent/>
+            <RoutingComponent />
         );
     }
 
