@@ -30,6 +30,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\Components\DWMapComponents\ActiveMenu.tsx" />
     <None Remove="ClientApp\src\Components\DWMapComponents\index.ts" />
     <None Remove="ClientApp\src\Components\Menu.tsx" />
     <None Remove="ClientApp\src\Components\MenuItem.tsx" />

@@ -1,7 +1,7 @@
 ﻿#menu{
     z-index: 2;
     background: var(--main);
-    overflow-y: auto;
+    overflow-y: overlay;
     overflow-x: hidden;
     border-radius: 0.5rem;
 }

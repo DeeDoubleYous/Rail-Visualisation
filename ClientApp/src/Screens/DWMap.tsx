@@ -4,10 +4,12 @@ import * as Maptalks from 'maptalks';
 import { IMap, ILayer } from '../Interfaces';
 import { LayerMenu, LayerMenuItem, Menu } from '../Components';
 import '../Styles/Screens/DWMap.css';
+import { ActiveMenu } from '../Components/DWMapComponents/ActiveMenu';
 
 const DWMap: FunctionComponent<IMap> = (props): ReactElement => {
     const [map, setMap] = useState<Maptalks.Map>();
-    const [activeLayer, setActiveLayer] = useState<ILayer | null>();
+    const [selectedLayer, setSelectedLayer] = useState<ILayer | null>();
+    const [activeLayers, setActiveLayers] = useState<ILayer[]>([]);
 
     useEffect(() => {
         const localMap = new Maptalks.Map('map', {
@@ -33,34 +35,27 @@ const DWMap: FunctionComponent<IMap> = (props): ReactElement => {
     }, []);
 
     const addLayer = (layer: ILayer) => {
-        if (activeLayer) {
-            activeLayer.removeLayer();
-        }
-        setActiveLayer(layer);
+        setSelectedLayer(layer);
+        setActiveLayers(activeLayers.concat(layer));
         map?.addLayer(layer.getMapLayer())
     };
 
-    const removeLayer = () => {
-        if (activeLayer) {
-            activeLayer.removeLayer();
-        }
-        setActiveLayer(null);
+    const removeLayer = (layer: ILayer) => {
+        layer.removeLayer();
+
+        setActiveLayers(activeLayers.filter(item => item !== layer));
+        setSelectedLayer(null);
     };
 
     return (
         <div className={props.className}>
             <LayerMenu addLayer={addLayer} />
-            <div id='map'/>
+            <div id='map' />
+            <ActiveMenu activeLayers={activeLayers} removeLayer={removeLayer} />
             {
-                activeLayer && activeLayer.drawComponents()
+                selectedLayer && selectedLayer.drawComponents()
             }
-            {
-                activeLayer && (
-                    <Menu className='activeLayerMenu' >
-                        <LayerMenuItem className={activeLayer.className} itemTitle={activeLayer.getLayerTitle()} primaryAction={removeLayer} />
-                    </Menu>
-                )
-            }
+            
         </div>
     );
 };

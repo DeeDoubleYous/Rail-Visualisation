@@ -7,10 +7,16 @@
     z-index: 1;
 }
 
-.activeLayerMenu {
+.activeMenu {
     position: absolute;
     top: 35%;
     width: 20%;
+    max-height: 30%;
+    overflow: hidden;
+}
+
+.activeLayers{
+    overflow: overlay;
 }
 
 .layerMenu {
