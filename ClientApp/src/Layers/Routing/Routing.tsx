@@ -12,12 +12,13 @@ export class Routing implements ILayer {
     className: string;
     id: string;
     layerTitle: string = 'Routing';
+    selected: boolean = false;
 
     constructor(className: string, id: string) {
-        this.mapLayer = this.contructMapLayer();
-
         this.className = className;
         this.id = id;
+
+        this.mapLayer = this.contructMapLayer();
     }
 
     private contructMapLayer(): VectorLayer {
@@ -30,7 +31,7 @@ export class Routing implements ILayer {
 
     drawComponents(): ReactElement {
         return (
-            <RoutingComponent/>
+            <RoutingComponent className={this.className} />
         );
     }
 
@@ -40,5 +41,13 @@ export class Routing implements ILayer {
 
     getLayerTitle(): string {
         return this.layerTitle;
+    }
+
+    getSelected(): boolean {
+        return this.selected;
+    }
+
+    setSelected(selected: boolean): void {
+        this.selected = selected;
     }
 }

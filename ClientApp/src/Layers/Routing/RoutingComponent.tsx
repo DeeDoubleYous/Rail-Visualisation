@@ -1,11 +1,15 @@
 ﻿import { FunctionComponent, ReactElement } from 'react';
 import { Menu } from '../../Components';
 
-export const RoutingComponent: FunctionComponent = (): ReactElement => {
+export interface IRoutingComponent{
+    className: string
+}
+
+export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): ReactElement => {
     return (
         <div>
             <Menu className='routingMenu'>
-                <p> I am some text</p>
+                <p> I belong to {props.className}</p>
             </Menu>
         </div>
     );

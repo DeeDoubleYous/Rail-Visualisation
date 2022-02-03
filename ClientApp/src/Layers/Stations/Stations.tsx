@@ -11,6 +11,7 @@ export class Stations implements ILayer {
     className: string;
     id: string;
     layerTitle: string = 'Stations';
+    selected: boolean = false;
 
     constructor(className: string, id: string) {
         this.className = className;
@@ -29,7 +30,7 @@ export class Stations implements ILayer {
 
     drawComponents(): ReactElement {
         return (
-            <RoutingComponent />
+            <RoutingComponent className={this.id}/>
         );
     }
 
@@ -39,5 +40,13 @@ export class Stations implements ILayer {
 
     getLayerTitle(): string {
         return this.layerTitle;
+    }
+
+    getSelected(): boolean {
+        return this.selected;
+    }
+
+    setSelected(selected: boolean): void {
+        this.selected = selected;
     }
 }

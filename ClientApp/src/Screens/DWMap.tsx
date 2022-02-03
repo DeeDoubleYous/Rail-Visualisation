@@ -34,24 +34,35 @@ const DWMap: FunctionComponent<IMap> = (props): ReactElement => {
         }
     }, []);
 
-    const addLayer = (layer: ILayer) => {
+    const changeSelectedLayer = (layer: ILayer) => {
+        if (selectedLayer) selectedLayer.setSelected(false);
         setSelectedLayer(layer);
+        layer.setSelected(true);
+    };
+
+    const addLayer = (layer: ILayer) => {
+        changeSelectedLayer(layer);
         setActiveLayers(activeLayers.concat(layer));
         map?.addLayer(layer.getMapLayer())
     };
 
     const removeLayer = (layer: ILayer) => {
         layer.removeLayer();
-
+        
         setActiveLayers(activeLayers.filter(item => item !== layer));
-        setSelectedLayer(null);
+
+        if (activeLayers.length - 1 > 0 && selectedLayer === layer) {
+            changeSelectedLayer(activeLayers[0]);
+        } else if(selectedLayer === layer){
+            setSelectedLayer(null);
+        }
     };
 
     return (
         <div className={props.className}>
             <LayerMenu addLayer={addLayer} />
             <div id='map' />
-            <ActiveMenu activeLayers={activeLayers} removeLayer={removeLayer} />
+            <ActiveMenu activeLayers={activeLayers} removeLayer={removeLayer} changeSelectedLayer={changeSelectedLayer} />
             {
                 selectedLayer && selectedLayer.drawComponents()
             }

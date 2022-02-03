@@ -12,6 +12,7 @@
 
 .itemTitle {
     grid-area: title;
+    user-select: none;
 }
 
 .addLayer {
