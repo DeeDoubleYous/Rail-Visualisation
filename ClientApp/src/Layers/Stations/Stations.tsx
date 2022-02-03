@@ -30,7 +30,8 @@ export class Stations implements ILayer {
 
     drawComponents(): ReactElement {
         return (
-            <RoutingComponent className={this.id}/>
+            <>
+            </>
         );
     }
 

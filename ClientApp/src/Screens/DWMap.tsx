@@ -52,7 +52,11 @@ const DWMap: FunctionComponent<IMap> = (props): ReactElement => {
         setActiveLayers(activeLayers.filter(item => item !== layer));
 
         if (activeLayers.length - 1 > 0 && selectedLayer === layer) {
-            changeSelectedLayer(activeLayers[0]);
+            if (layer === activeLayers[0]) {
+                changeSelectedLayer(activeLayers[1]);
+            } else {
+                changeSelectedLayer(activeLayers[0]);
+            }
         } else if(selectedLayer === layer){
             setSelectedLayer(null);
         }
