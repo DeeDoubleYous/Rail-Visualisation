@@ -232,4 +232,4 @@ _Pvt_Extensions
 .fake/
 
 # The config file
-web.config
+app.config

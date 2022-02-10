@@ -19,6 +19,9 @@ export class Routing implements ILayer {
         this.id = id;
 
         this.mapLayer = this.contructMapLayer();
+
+        this.fetchData();
+
     }
 
     private contructMapLayer(): VectorLayer {
@@ -49,5 +52,12 @@ export class Routing implements ILayer {
 
     setSelected(selected: boolean): void {
         this.selected = selected;
+    }
+
+    async fetchData() {
+        const data = await fetch('/routing');
+        const text = await data.json();
+
+        console.log(text);
     }
 }
