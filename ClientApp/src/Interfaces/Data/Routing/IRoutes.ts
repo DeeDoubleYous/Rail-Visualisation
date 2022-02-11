@@ -3,7 +3,12 @@
 export interface IRoutes {
     bounds: IBounds,
     copyrights: string,
-    legs: ILeg[]
+    legs: ILeg[],
+    overview_polyline: {
+        points: string
+    },
+    summary: string,
+    warnings: string[]
 }
 
 export interface IBounds {

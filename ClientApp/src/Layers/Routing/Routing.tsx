@@ -4,6 +4,7 @@ import { ILayer } from '../../Interfaces';
 import { RoutingComponent } from './RoutingComponent';
 
 import '../../Styles/Layers/Routing/Routing.css';
+import { IRouting } from '../../Interfaces/Data/Routing';
 
 export class Routing implements ILayer {
 
@@ -20,8 +21,6 @@ export class Routing implements ILayer {
 
         this.mapLayer = this.contructMapLayer();
 
-        this.fetchData();
-
     }
 
     private contructMapLayer(): VectorLayer {
@@ -34,7 +33,7 @@ export class Routing implements ILayer {
 
     drawComponents(): ReactElement {
         return (
-            <RoutingComponent className={this.className} />
+            <RoutingComponent className={this.className} layer={this.mapLayer} fetchData={this.fetchData} />
         );
     }
 
@@ -56,7 +55,7 @@ export class Routing implements ILayer {
 
     async fetchData() {
         const data = await fetch('/routing');
-        const text = await data.json();
+        const text = await data.json() as IRouting;
 
         console.log(text);
     }

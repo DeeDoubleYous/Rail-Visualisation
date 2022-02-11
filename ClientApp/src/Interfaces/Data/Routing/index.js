@@ -15,4 +15,6 @@ __exportStar(require("./IRoutes"), exports);
 __exportStar(require("./ILeg"), exports);
 __exportStar(require("./ITextValuePair"), exports);
 __exportStar(require("./ILocation"), exports);
+__exportStar(require("./IStep"), exports);
+__exportStar(require("./ILine"), exports);
 //# sourceMappingURL=index.js.map
