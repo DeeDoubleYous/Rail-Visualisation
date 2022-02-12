@@ -11,7 +11,8 @@ export interface IStep {
     },
     start_location: ILocation,
     transit_details?: ITransitDetails,
-    travel_mode: string
+    travel_mode: string,
+    steps?: IStep[]
 }
 
 export interface ITransitDetails {

@@ -1,15 +1,24 @@
 ﻿import { FunctionComponent, ReactElement } from 'react';
 import { Menu } from '../../Components';
-import { Layer } from 'maptalks';
+import { VectorLayer, LineString } from 'maptalks';
 
 export interface IRoutingComponent{
     className: string,
-    layer: Layer,
-    fetchData: () => void
+    layer: VectorLayer,
+    fetchData: () => Promise<void>
 }
 
 export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): ReactElement => {
-    props.fetchData();
+
+    const line = new LineString([[-0.1189532, 50.8464825], [-0.141252, 50.828999]], {
+        symbol: {
+            lineColor: '#003f2e',
+            lineWidth: 4
+        }
+    });
+
+    line.addTo(props.layer);
+    //props.fetchData();
     return (
         <div>
             <Menu className='routingMenu'>

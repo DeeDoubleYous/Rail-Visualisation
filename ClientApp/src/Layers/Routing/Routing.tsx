@@ -24,7 +24,7 @@ export class Routing implements ILayer {
     }
 
     private contructMapLayer(): VectorLayer {
-        return new VectorLayer(`routing${this.id}`, new Marker([-0.119460, 50.844419]));
+        return new VectorLayer(`routing${this.id}`);
     }
 
     removeLayer(): void {
