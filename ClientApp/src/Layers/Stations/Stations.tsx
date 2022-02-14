@@ -1,7 +1,6 @@
 ﻿import { VectorLayer, Marker } from 'maptalks';
 import { ReactElement } from 'react';
 
-import { RoutingComponent } from '../Routing';
 import { ILayer } from '../../Interfaces';
 
 export class Stations implements ILayer {

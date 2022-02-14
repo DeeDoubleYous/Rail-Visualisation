@@ -45,6 +45,7 @@
     <None Remove="ClientApp\src\Interfaces\Components\Menu\ILayerMenuItem.ts" />
     <None Remove="ClientApp\src\Interfaces\Components\Menu\IMenuItem.ts" />
     <None Remove="ClientApp\src\Interfaces\Components\Menu\index.ts" />
+    <None Remove="ClientApp\src\Interfaces\Data\index.ts" />
     <None Remove="ClientApp\src\Interfaces\Data\IRouting.ts" />
     <None Remove="ClientApp\src\Interfaces\Data\Routing\ILeg.ts" />
     <None Remove="ClientApp\src\Interfaces\Data\Routing\ILine.ts" />
@@ -66,6 +67,9 @@
     <None Remove="ClientApp\src\Screens\DWMap.tsx" />
     <None Remove="ClientApp\src\Components\DWMapComponents\LayerMenu.tsx" />
     <None Remove="ClientApp\src\Styles\Components\index.ts" />
+    <None Remove="ClientApp\src\Utilities\index.ts" />
+    <None Remove="ClientApp\src\Utilities\Routing\index.ts" />
+    <None Remove="ClientApp\src\Utilities\Routing\LineCreation.ts" />
   </ItemGroup>
 
   <ItemGroup>

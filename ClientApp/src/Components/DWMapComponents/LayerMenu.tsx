@@ -1,6 +1,6 @@
 ﻿import { FunctionComponent, ReactElement } from 'react';
 
-import { Menu, LayerMenuItem } from '../../Components';
+import { Menu, LayerMenuItem } from '../';
 import { ILayer } from '../../Interfaces';
 import { Routing } from '../../Layers/Routing';
 import { Stations } from '../../Layers/Stations';

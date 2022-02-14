@@ -1,6 +1,6 @@
 ﻿import { IRoutes } from './';
 
 export interface IRouting {
-    routes: IRoutes,
+    routes: IRoutes[],
     status: string
 }

@@ -21,9 +21,12 @@ export interface ITransitDetails {
         name: string
     },
     arrival_time: ITextValuePair,
-    depature_stop: ITextValuePair,
+    departure_stop: {
+        location: ILocation,
+        name: string
+    },
     headsign: string,
-    depature_time: ITextValuePair,
+    departure_time: ITextValuePair,
     line: ILine,
     num_stops:number
 }
