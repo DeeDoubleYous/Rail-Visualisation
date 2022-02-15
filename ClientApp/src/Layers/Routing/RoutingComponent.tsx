@@ -15,17 +15,16 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
     const [route, setRoute] = useState<IRouting>();
 
     useEffect(() => {
-        props.fetchData().then(fetchedRoute => {
-            setRoute(fetchedRoute);
-            createRouteLine(fetchedRoute.routes[0]).map(line => line.addTo(props.layer));
-        });
+        props.fetchData().then(setRoute);
     }, []);
+
+    useEffect(() => {
+        if(route) createRouteLine(route.routes[0]).map(line => line.addTo(props.layer));
+    }, [route]);
     
     return (
-        <div>
-            <Menu className='routingMenu'>
-                <p> I belong to {props.className}</p>
-            </Menu>
-        </div>
+        <Menu className='routingMenu'>
+            <p> I belong to {props.className}</p>
+        </Menu>
     );
 };

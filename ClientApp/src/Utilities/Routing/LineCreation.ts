@@ -1,8 +1,6 @@
 ﻿import { LineString } from 'maptalks';
 import { ILocation, ILeg, IStep, IRoutes } from '../../Interfaces/Data';
 
-export const rFold = <a, b>(func: (acc: b, item: a) => b, acc: b, [head, ...tail]: a[]): b => tail.length == 0 ? func(acc, head) : func(rFold(func, acc, tail), head); 
-
 /**
  * *
  * A function to use to create line for the map. Unconcerned with the adding to the map only creates the line object.
@@ -11,7 +9,7 @@ export const rFold = <a, b>(func: (acc: b, item: a) => b, acc: b, [head, ...tail
  * @param lineColour
  * @param lineWidth
  */
-export const createLine = (startLocation: ILocation, endLocation: ILocation, lineColour: string, lineWidth: number): LineString => {
+const createLine = (startLocation: ILocation, endLocation: ILocation, lineColour: string, lineWidth: number): LineString => {
     return new LineString([[startLocation.lng, startLocation.lat], [endLocation.lng, endLocation.lat]], {
         symbol: {
             lineColor: lineColour,
@@ -20,14 +18,21 @@ export const createLine = (startLocation: ILocation, endLocation: ILocation, lin
     });
 };
 
-export const createStepLine = (step: IStep): LineString => {
+const createStepLine = (step: IStep): LineString => {
     return createLine(step.start_location, step.end_location, '#235689', 3);
 };
 
-export const createLineFromLeg = (leg: ILeg): LineString[] => {
-    return leg.steps.map(createStepLine);
+const createStepLineList = (step: IStep): LineString[] => {
+    if (step.steps) {
+        return step.steps.map(createStepLine);
+    }
+    return [createStepLine(step)];
+}
+
+const createLineFromLeg = (leg: ILeg): LineString[] => {
+    return leg.steps.map(createStepLineList).flat();
 };
 
 export const createRouteLine = (route: IRoutes): LineString[] => {
-    return rFold((acc: LineString[], item: ILeg) => acc.concat(createLineFromLeg(item)), [], route.legs);
+    return route.legs.map(createLineFromLeg).flat();
 };
