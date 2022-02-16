@@ -1,0 +1,30 @@
+﻿.search{
+    display: grid;
+    grid-template-rows: ' 30% 10% 30% 10% 20%';
+    grid-template-areas: 
+        'inputOneLabel'
+        'inputOne'
+        'inputTwoLabel'
+        'inputTwo'
+        'submit';
+}
+
+.inputOneLabel{
+    grid-area: inputOneLabel;
+}
+
+.inputTwoLabel{
+    grid-area: inputTwoLabel;
+}
+
+#inputOne{
+    grid-area: inputOne;
+}
+
+#inputTwo{
+    grid-area: inputTwo;
+}
+
+.submit{
+    grid-area: submit;
+}

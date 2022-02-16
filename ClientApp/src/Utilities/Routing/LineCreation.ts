@@ -22,12 +22,7 @@ const createStepLine = (step: IStep): LineString => {
     return createLine(step.start_location, step.end_location, '#235689', 3);
 };
 
-const createStepLineList = (step: IStep): LineString[] => {
-    if (step.steps) {
-        return step.steps.map(createStepLine);
-    }
-    return [createStepLine(step)];
-}
+const createStepLineList = (step: IStep): LineString[] => step.steps ? step.steps.map(createStepLine) : [createStepLine(step)];
 
 const createLineFromLeg = (leg: ILeg): LineString[] => {
     return leg.steps.map(createStepLineList).flat();

@@ -1,5 +1,5 @@
 ﻿import { FunctionComponent, ReactElement, useEffect, useState } from 'react';
-import { Menu } from '../../Components';
+import { Menu, Search } from '../../Components';
 import { VectorLayer, LineString } from 'maptalks';
 import { IRouting, IStep } from '../../Interfaces';
 import { createRouteLine } from '../../Utilities';
@@ -24,7 +24,7 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
     
     return (
         <Menu className='routingMenu'>
-            <p> I belong to {props.className}</p>
+            <Search id='routingSearch' inputOneLabel='Start Location' inputTwoLabel='End Location' />
         </Menu>
     );
 };

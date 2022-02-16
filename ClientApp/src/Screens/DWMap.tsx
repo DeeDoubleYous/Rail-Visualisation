@@ -15,10 +15,10 @@ const DWMap: FunctionComponent<IMap> = (props): ReactElement => {
         const localMap = new Maptalks.Map('map', {
             center: [-0.119460, 50.844419],
             zoom: 13,
-            minZoom: 3,
+            minZoom: 6,
             baseLayer: new Maptalks.TileLayer('base', {
                 renderer: 'gl',
-                urlTemplate: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+                urlTemplate: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
                 subdomains: ['a', 'b', 'c', 'd'],
                 attribution: '&copy; <a href="http://www.osm.org/copyright">OSM</a> contributors, ' +
                     '&copy; <a href="https://carto.com/attributions">CARTO</a>'
