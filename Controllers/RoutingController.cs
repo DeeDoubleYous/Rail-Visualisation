@@ -20,12 +20,9 @@ namespace RailVisualisation.Controllers
         [HttpGet]
         public async Task<string> Get(string origin, string destination)
         {
-
-            string data = "";
-
             var key = System.Configuration.ConfigurationManager.AppSettings["apiKey"];
 
-            string directionsURL = $"{System.Configuration.ConfigurationManager.ConnectionStrings["directionsAPI"].ConnectionString}?key={key}&origin={origin}&destination={destination}&mode=transit&transit_mode=train";
+            string directionsURL = $"{System.Configuration.ConfigurationManager.ConnectionStrings["directionsAPI"].ConnectionString}?key={key}&origin={origin}&destination={destination}&mode=transit";
 
             try
             {
@@ -33,7 +30,7 @@ namespace RailVisualisation.Controllers
                 {
                     using(var reader = new StreamReader(stream))
                     {
-                        data = reader.ReadToEnd();
+                        return reader.ReadToEnd();
                     }
                 }
             }
@@ -42,7 +39,6 @@ namespace RailVisualisation.Controllers
                 Console.WriteLine(e.Data);
                 return e.ToString();
             }
-            return data;
         }
     }
 }
