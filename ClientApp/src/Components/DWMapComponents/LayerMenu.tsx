@@ -18,11 +18,11 @@ export const LayerMenu: FunctionComponent<ILayerMenu> = (props): ReactElement =>
 
     return (
         <Menu className='layerMenu'>
-            <LayerMenuItem className='Routing' itemTitle='routing' primaryAction={() => {
+            <LayerMenuItem className='Routing' itemTitle='Routing' primaryAction={() => {
                 const routing = new Routing('routing', `${generateDateTimeId()}`);
                 props.addLayer(routing);
             }} />
-            <LayerMenuItem className='Stations' itemTitle='stations' primaryAction={() => {
+            <LayerMenuItem className='Stations' itemTitle='Stations' primaryAction={() => {
                 const stations = new Stations('stations', `${generateDateTimeId()}`);
                 props.addLayer(stations);
             }}/>

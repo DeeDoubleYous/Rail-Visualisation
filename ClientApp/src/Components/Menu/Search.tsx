@@ -6,7 +6,7 @@ export interface ISearch {
     id: string,
     inputOneLabel: string,
     inputTwoLabel: string,
-    handleSearch?: (inputOne: string, inputTwo: string) => void
+    handleSearch: (inputOne: string, inputTwo: string) => void
 }
 
 export const Search: FunctionComponent<ISearch> = (props): ReactElement => {
@@ -16,13 +16,14 @@ export const Search: FunctionComponent<ISearch> = (props): ReactElement => {
 
     return (
         <div id={props.id} className='search'>
-            <label className='inputOneLabel'>{props.inputOneLabel}</label>
-            <TextField id='inputOne' variant='filled' value={inputOne} onChange={e => setInputOne(e.target.value)} />
-            <label className='inputTwoLabel'>{props.inputTwoLabel}</label>
-            <TextField id='inputTwo' variant='filled' value={inputTwo} onChange={e => setInputTwo(e.target.value)} />
+            <label id='inputOneLabel' className='inputLabel'>{props.inputOneLabel}</label>
+            <input id='inputOne' className='searchInput' type='text' value={inputOne} onChange={e => setInputOne(e.target.value)} />
+            <label id='inputTwoLabel' className='inputLabel'>{props.inputTwoLabel}</label>
+            <input id='inputTwo' className='searchInput' type='text' value={inputTwo} onChange={e => setInputTwo(e.target.value)} />
             <button className='submit' onClick={() => {
-                console.log(inputOne);
-                console.log(inputTwo);
+                if (inputOne !== '' && inputTwo !== '') {
+                    props.handleSearch(inputOne, inputTwo);
+                }
             }}>Search</button>
         </div>
     );

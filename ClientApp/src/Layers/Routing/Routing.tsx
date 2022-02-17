@@ -52,9 +52,9 @@ export class Routing implements ILayer {
     setSelected(selected: boolean): void {
         this.selected = selected;
     }
-
-    async fetchData(): Promise<IRouting> {
-        const data = await fetch('/routing');
+    
+    async fetchData(origin: string, destination: string): Promise<IRouting> {
+        const data = await fetch(`/routing?origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(destination)}`);
         const text = await data.json() as IRouting;
         
         return text;

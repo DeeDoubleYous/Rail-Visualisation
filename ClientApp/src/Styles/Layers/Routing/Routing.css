@@ -1,4 +1,7 @@
 ﻿.routingMenu{
     position: absolute;
-    right: 1%;
+    right: 0%;
+    min-height: 20%;
+    max-height: 90%;
+    width: 20%;
 }

@@ -1,19 +1,20 @@
 ﻿.search{
     display: grid;
-    grid-template-rows: ' 30% 10% 30% 10% 20%';
+    grid-template-rows: 15% 25% 15% 25% 20%;
     grid-template-areas: 
         'inputOneLabel'
         'inputOne'
         'inputTwoLabel'
         'inputTwo'
         'submit';
+    height: 100%;
 }
 
-.inputOneLabel{
+#inputOneLabel{
     grid-area: inputOneLabel;
 }
 
-.inputTwoLabel{
+#inputTwoLabel{
     grid-area: inputTwoLabel;
 }
 
@@ -26,5 +27,24 @@
 }
 
 .submit{
+    height: 100%;
     grid-area: submit;
+    background: var(--secondary);
+}
+
+.searchInput{
+    background: var(--secondary);
+    color: white;
+    border: none;
+    height: 100%;
+}
+
+.searchInput:focus{
+    border: none;
+    outline: none;
+}
+
+.inputLabel{
+    font-size: 90%;
+    height: 100%;
 }
