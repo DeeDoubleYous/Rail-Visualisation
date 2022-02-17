@@ -6,7 +6,9 @@ export interface ISearch {
     id: string,
     inputOneLabel: string,
     inputTwoLabel: string,
-    handleSearch: (inputOne: string, inputTwo: string) => void
+    handleSearch: (inputOne: string, inputTwo: string) => void,
+    clearSearch: () => void,
+    searchComplete?: boolean,
 }
 
 export const Search: FunctionComponent<ISearch> = (props): ReactElement => {
@@ -25,6 +27,7 @@ export const Search: FunctionComponent<ISearch> = (props): ReactElement => {
                     props.handleSearch(inputOne, inputTwo);
                 }
             }}>Search</button>
+            <button className='clearSearch' onClick={props.clearSearch} disabled={!props.searchComplete}>Clear Search</button>
         </div>
     );
 }
