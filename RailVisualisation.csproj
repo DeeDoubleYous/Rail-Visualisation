@@ -58,8 +58,10 @@
     <None Remove="ClientApp\src\Interfaces\index.ts" />
     <None Remove="ClientApp\src\Interfaces\Layers\ILayer.ts" />
     <None Remove="ClientApp\src\Interfaces\Layers\index.ts" />
+    <None Remove="ClientApp\src\Interfaces\Layers\IRoutingItem.ts" />
     <None Remove="ClientApp\src\Interfaces\Screens\IMap.ts" />
     <None Remove="ClientApp\src\Interfaces\Screens\index.ts" />
+    <None Remove="ClientApp\src\Layers\Routing\DirectionsItem.tsx" />
     <None Remove="ClientApp\src\Layers\Routing\index.ts" />
     <None Remove="ClientApp\src\Layers\Routing\Routing.tsx" />
     <None Remove="ClientApp\src\Layers\Routing\RoutingComponent.tsx" />

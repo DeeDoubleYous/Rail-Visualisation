@@ -1,8 +1,9 @@
 ﻿import { FunctionComponent, ReactElement, useEffect, useState } from 'react';
 import { Menu, Search } from '../../Components';
 import { VectorLayer, LineString } from 'maptalks';
-import { IRouting, IStep } from '../../Interfaces';
+import { IRouting, IRoutingItem, IStep } from '../../Interfaces';
 import { createRouteLine } from '../../Utilities';
+import { DirectionsItem } from './DirectionsItem';
 
 export interface IRoutingComponent{
     className: string,
@@ -13,18 +14,17 @@ export interface IRoutingComponent{
 export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): ReactElement => {
 
     const [route, setRoute] = useState<IRouting>(),
-        [lines, setLines] = useState<LineString[]>([]),
-        [searched, setSearched] = useState<boolean>(false);
+        [lines, setLines] = useState<IRoutingItem[]>([]);
 
-    //useEffect(() => {
-    //    props.fetchData().then(setRoute);
-    //}, []);
+    const addToMap = (line: IRoutingItem): void | LineString => line.subSteps ? line.subSteps.forEach(addToMap) : line.lineString?.addTo(props.layer);
+
+    const removeFromMap = (line: IRoutingItem): void | LineString => line.subSteps ? line.subSteps.forEach(removeFromMap) : line.lineString?.remove();
 
     useEffect(() => {
         if (route) {
             const tempLines = createRouteLine(route.routes[0]);
 
-            tempLines.map(line => line.addTo(props.layer));
+            tempLines.forEach(addToMap);
 
             setLines(tempLines);
         }
@@ -36,25 +36,40 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
         switch (fetchedData.status){
             case 'OK':
                 setRoute(fetchedData);
-                setSearched(true);
                 break;
             case 'ZERO_RESULTS':
                 alert('not found');
+                break;
 
         }
     };
 
     const clearSearch = () => {
-        lines.map(line => line.remove());
+        lines.forEach(removeFromMap);
         setLines([]);
-        setSearched(false);
+        setRoute(undefined);
     };
 
     return (
         <Menu className='routingMenu'>
-            <Search id='routingSearch' inputOneLabel='Start Location' inputTwoLabel='End Location' handleSearch={handleSearch} clearSearch={clearSearch} searchComplete={searched} />
-            <div className='outputList'>
-            </div>
+            <Search id='routingSearch'
+                inputOneLabel='Start Location'
+                inputTwoLabel='End Location'
+                handleSearch={handleSearch}
+            />
+            {
+                route ?
+                    <div className='outputList'>
+                        {
+                            lines.map(line => (
+                                <DirectionsItem step={line} />
+                            ))
+                        }
+                        <button id='clearSearch' onClick={clearSearch}>Clear</button>
+                    </div>
+                    :
+                    <></>
+            }
         </Menu>
     );
 };

@@ -10,23 +10,23 @@ var maptalks_1 = require("maptalks");
  * @param lineColour
  * @param lineWidth
  */
-var createLine = function (startLocation, endLocation, lineColour, lineWidth) {
-    return new maptalks_1.LineString([[startLocation.lng, startLocation.lat], [endLocation.lng, endLocation.lat]], {
-        symbol: {
-            lineColor: lineColour,
-            lineWidth: lineWidth
-        }
-    });
-};
+var createLine = function (startLocation, endLocation, lineColour, lineWidth) { return new maptalks_1.LineString([
+    [startLocation.lng, startLocation.lat],
+    [endLocation.lng, endLocation.lat]
+], {
+    symbol: {
+        lineColor: lineColour,
+        lineWidth: lineWidth
+    }
+}); };
 var createStepLine = function (step) {
-    return createLine(step.start_location, step.end_location, '#235689', 3);
+    return {
+        step: step,
+        lineString: createLine(step.start_location, step.end_location, '#235689', 3)
+    };
 };
-var createStepLineList = function (step) { return step.steps ? step.steps.map(createStepLine) : [createStepLine(step)]; };
-var createLineFromLeg = function (leg) {
-    return leg.steps.map(createStepLineList).flat();
-};
-var createRouteLine = function (route) {
-    return route.legs.map(createLineFromLeg).flat();
-};
+var createStepLineList = function (step) { return step.steps ? [{ step: step, subSteps: step.steps.map(createStepLine) }] : [createStepLine(step)]; };
+var createLineFromLeg = function (leg) { return leg.steps.map(createStepLineList).flat(); };
+var createRouteLine = function (route) { return route.legs.map(createLineFromLeg).flat(); };
 exports.createRouteLine = createRouteLine;
 //# sourceMappingURL=LineCreation.js.map

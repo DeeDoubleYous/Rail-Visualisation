@@ -1,4 +1,5 @@
 ﻿import { LineString } from 'maptalks';
+import { IRoutingItem } from '../../Interfaces';
 import { ILocation, ILeg, IStep, IRoutes } from '../../Interfaces/Data';
 
 /**
@@ -9,25 +10,28 @@ import { ILocation, ILeg, IStep, IRoutes } from '../../Interfaces/Data';
  * @param lineColour
  * @param lineWidth
  */
-const createLine = (startLocation: ILocation, endLocation: ILocation, lineColour: string, lineWidth: number): LineString => {
-    return new LineString([[startLocation.lng, startLocation.lat], [endLocation.lng, endLocation.lat]], {
+const createLine = (startLocation: ILocation, endLocation: ILocation, lineColour: string, lineWidth: number): LineString => new LineString(
+    [
+        [startLocation.lng, startLocation.lat],
+        [endLocation.lng, endLocation.lat]
+    ],
+    {
         symbol: {
             lineColor: lineColour,
             lineWidth: lineWidth
         }
-    });
+    }
+);
+
+const createStepLine = (step: IStep): IRoutingItem => {
+    return {
+        step: step,
+        lineString: createLine(step.start_location, step.end_location, '#235689', 3)
+    }
 };
 
-const createStepLine = (step: IStep): LineString => {
-    return createLine(step.start_location, step.end_location, '#235689', 3);
-};
+const createStepLineList = (step: IStep): IRoutingItem[] => step.steps ? [{ step: step, subSteps: step.steps.map(createStepLine) }] : [createStepLine(step)];
 
-const createStepLineList = (step: IStep): LineString[] => step.steps ? step.steps.map(createStepLine) : [createStepLine(step)];
+const createLineFromLeg = (leg: ILeg): IRoutingItem[] => leg.steps.map(createStepLineList).flat();
 
-const createLineFromLeg = (leg: ILeg): LineString[] => {
-    return leg.steps.map(createStepLineList).flat();
-};
-
-export const createRouteLine = (route: IRoutes): LineString[] => {
-    return route.legs.map(createLineFromLeg).flat();
-};
+export const createRouteLine = (route: IRoutes): IRoutingItem[] => route.legs.map(createLineFromLeg).flat();
