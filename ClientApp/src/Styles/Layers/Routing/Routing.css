@@ -4,4 +4,38 @@
     min-height: 20%;
     max-height: 90%;
     width: 20%;
+    overflow: hidden;
+    display: grid;
+    grid-template-areas: 
+        'search'
+        'outputList';
+    grid-template-rows: 20% 80%;
+}
+
+
+#routingSearch{
+    grid-area: search;
+    min-height: 6rem;
+}
+
+.outputList{
+    grid-area: outputList;
+    overflow-y: overlay;
+}
+
+
+
+.outputList::-webkit-scrollbar {
+    width: 0.5rem;
+    border-radius: 0.5rem;
+    background: transparent;
+}
+
+.outputList::-webkit-scrollbar-thumb {
+    background: rgb(255, 255, 255, 0.5);
+    border-radius: 1rem;
+}
+
+.outputList::-webkit-scrollbar-button {
+    height: 2%;
 }
