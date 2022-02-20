@@ -1,5 +1,5 @@
 ﻿#menu{
-    z-index: 2;
+    z-index: 3;
     background: var(--main);
     overflow-y: overlay;
     overflow-x: hidden;

@@ -1,21 +1,28 @@
 ﻿.routingMenu{
     position: absolute;
     right: 0%;
-    min-height: 20%;
-    max-height: 90%;
+    height: 20%;
     width: 20%;
-    overflow: hidden;
-    display: grid;
-    grid-template-areas: 
-        'search'
-        'outputList';
-    grid-template-rows: 20% 80%;
 }
-
 
 #routingSearch{
     grid-area: search;
     min-height: 6rem;
+}
+
+.directionMenu {
+    position: absolute;
+    right: 0%;
+    min-height: 20%;
+    max-height: 50%;
+    top: 25%;
+    width: 20%;
+    display: grid;
+    grid-template-areas: 
+        'clearSearch'
+        'outputList';
+    grid-template-rows: 5% 95%;
+    overflow: hidden;
 }
 
 .outputList{
@@ -23,7 +30,11 @@
     overflow-y: overlay;
 }
 
-
+#clearSearch{
+    grid-area: clearSearch;
+    outline: none;
+    background: var(--secondary);
+}
 
 .outputList::-webkit-scrollbar {
     width: 0.5rem;

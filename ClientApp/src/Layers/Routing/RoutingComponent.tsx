@@ -51,23 +51,27 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
     };
 
     return (
+        <>
         <Menu className='routingMenu'>
             <Search id='routingSearch'
                 inputOneLabel='Start Location'
                 inputTwoLabel='End Location'
                 handleSearch={handleSearch}
             />
+        </Menu>
             {
                 route &&
+                <Menu className='directionMenu'>
                     <div className='outputList'>
                         {
                             lines.map(line =>
                                 <DirectionsItem step={line} key={line.step.polyline.points} />
                             )
                         }
-                        <button id='clearSearch' onClick={clearSearch}>Clear</button>
                     </div>
+                    <button id='clearSearch' onClick={clearSearch}>Clear</button>
+                </Menu>
             }
-        </Menu>
+        </>
     );
 };
