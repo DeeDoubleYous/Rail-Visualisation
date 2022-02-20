@@ -11,11 +11,6 @@ export const DirectionsItem: FunctionComponent<IDirectionsItem> = (props): React
 
     let output: ReactElement = (<></>);
 
-    const createDateString = (dateVal: number | string) => {
-        const date = new Date(dateVal);
-        return `${date.getDay()}/${date.getMonth()+1}/${date.getFullYear()}`
-    }
-
     if (props.step.step.transit_details) {
         const transitDetail = props.step.step.transit_details;
         output = (
