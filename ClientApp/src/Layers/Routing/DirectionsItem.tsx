@@ -6,7 +6,6 @@ interface IDirectionsItem {
     step: IRoutingItem
 }
 
-
 export const DirectionsItem: FunctionComponent<IDirectionsItem> = (props): ReactElement => {
 
     let output: ReactElement = (<></>);
@@ -18,7 +17,7 @@ export const DirectionsItem: FunctionComponent<IDirectionsItem> = (props): React
                 <div className='htmlDirections'>{props.step.step.html_instructions}</div>
                 <div className='timeDirections'>{`Depature Time: ${transitDetail.departure_time.text} Arrival Time: ${transitDetail.arrival_time.text}`}</div>
                 <div className='company'>{`Company: ${transitDetail.line.agencies[0].name}`}</div>
-                <div className='transitDirections'>{`Vehicle heading:${transitDetail.headsign}`}</div>
+                <div className='transitDirections'>{`Vehicle headsign: ${transitDetail.headsign}`}</div>
             </>
         );
     }
