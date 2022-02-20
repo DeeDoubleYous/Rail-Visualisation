@@ -58,17 +58,15 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
                 handleSearch={handleSearch}
             />
             {
-                route ?
+                route &&
                     <div className='outputList'>
                         {
-                            lines.map(line => (
-                                <DirectionsItem step={line} />
-                            ))
+                            lines.map(line =>
+                                <DirectionsItem step={line} key={line.step.polyline.points} />
+                            )
                         }
                         <button id='clearSearch' onClick={clearSearch}>Clear</button>
                     </div>
-                    :
-                    <></>
             }
         </Menu>
     );

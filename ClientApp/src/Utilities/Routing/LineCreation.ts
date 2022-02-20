@@ -1,6 +1,13 @@
 ﻿import { LineString } from 'maptalks';
+import { decode } from '@googlemaps/polyline-codec';
 import { IRoutingItem } from '../../Interfaces';
-import { ILocation, ILeg, IStep, IRoutes } from '../../Interfaces/Data';
+import { ILocation, ILeg, IStep, IRoutes, IPolyLine } from '../../Interfaces/Data';
+
+
+const decodePolyLine = (line: IPolyLine) => {
+    const points = decode(line.points);
+    return points.map(([lat, lng]) => [lng, lat]);
+}
 
 /**
  * *
@@ -10,11 +17,8 @@ import { ILocation, ILeg, IStep, IRoutes } from '../../Interfaces/Data';
  * @param lineColour
  * @param lineWidth
  */
-const createLine = (startLocation: ILocation, endLocation: ILocation, lineColour: string, lineWidth: number): LineString => new LineString(
-    [
-        [startLocation.lng, startLocation.lat],
-        [endLocation.lng, endLocation.lat]
-    ],
+const createLine = (points: number[][], lineColour: string, lineWidth: number): LineString => new LineString(
+    points,
     {
         symbol: {
             lineColor: lineColour,
@@ -23,10 +27,17 @@ const createLine = (startLocation: ILocation, endLocation: ILocation, lineColour
     }
 );
 
+
 const createStepLine = (step: IStep): IRoutingItem => {
+    let colour = '#235689';
+
+    if (step.travel_mode == 'TRANSIT' && step.transit_details) {
+        colour = step.transit_details.line.color;
+    }
+
     return {
         step: step,
-        lineString: createLine(step.start_location, step.end_location, '#235689', 3)
+        lineString: createLine(decodePolyLine(step.polyline), colour, 3)
     }
 };
 

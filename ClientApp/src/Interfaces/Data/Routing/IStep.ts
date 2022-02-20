@@ -6,9 +6,7 @@ export interface IStep {
     end_location: ILocation,
     html_instructions: string,
     maneuver?: string,
-    polyline: {
-        points: string
-    },
+    polyline: IPolyLine,
     start_location: ILocation,
     transit_details?: ITransitDetails,
     travel_mode: string,
@@ -29,4 +27,8 @@ export interface ITransitDetails {
     departure_time: ITextValuePair,
     line: ILine,
     num_stops:number
+}
+
+export interface IPolyLine {
+    points: string
 }
