@@ -26,8 +26,8 @@ export const DirectionsItem: FunctionComponent<IDirectionsItem> = (props): React
         output = (
             <>
                 <div className='endLocation'>{props.step.step.html_instructions}</div>
-            </>                
-        )
+            </>
+        );
     }
 
     return (

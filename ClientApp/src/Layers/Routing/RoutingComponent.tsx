@@ -3,7 +3,7 @@ import { Menu, Search } from '../../Components';
 import { VectorLayer, LineString } from 'maptalks';
 import { IRouting, IRoutingItem, IStep } from '../../Interfaces';
 import { createRouteLine } from '../../Utilities';
-import { DirectionsItem } from './DirectionsItem';
+import { DirectionsList } from './DirectionsList';
 
 export interface IRoutingComponent{
     className: string,
@@ -62,13 +62,7 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
             {
                 route &&
                 <Menu className='directionMenu'>
-                    <div className='outputList'>
-                        {
-                            lines.map(line =>
-                                <DirectionsItem step={line} key={line.step.polyline.points} />
-                            )
-                        }
-                    </div>
+                    <DirectionsList route={lines} />
                     <button id='clearSearch' onClick={clearSearch}>Clear</button>
                 </Menu>
             }

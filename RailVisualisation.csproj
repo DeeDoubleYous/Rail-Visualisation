@@ -71,6 +71,7 @@
     <None Remove="ClientApp\src\Components\DWMapComponents\LayerMenu.tsx" />
     <None Remove="ClientApp\src\Styles\Components\index.ts" />
     <None Remove="ClientApp\src\Utilities\index.ts" />
+    <None Remove="ClientApp\src\Utilities\Routing\DirectionsMenu.tsx" />
     <None Remove="ClientApp\src\Utilities\Routing\index.ts" />
     <None Remove="ClientApp\src\Utilities\Routing\LineCreation.ts" />
   </ItemGroup>

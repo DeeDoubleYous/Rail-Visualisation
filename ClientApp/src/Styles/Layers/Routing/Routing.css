@@ -25,7 +25,7 @@
     overflow: hidden;
 }
 
-.outputList{
+.directionsList{
     grid-area: outputList;
     overflow-y: overlay;
 }
@@ -36,17 +36,17 @@
     background: var(--secondary);
 }
 
-.outputList::-webkit-scrollbar {
+.directionsList::-webkit-scrollbar {
     width: 0.5rem;
     border-radius: 0.5rem;
     background: transparent;
 }
 
-.outputList::-webkit-scrollbar-thumb {
+.directionsList::-webkit-scrollbar-thumb {
     background: rgb(255, 255, 255, 0.5);
     border-radius: 1rem;
 }
 
-.outputList::-webkit-scrollbar-button {
+.directionsList::-webkit-scrollbar-button {
     height: 2%;
 }
