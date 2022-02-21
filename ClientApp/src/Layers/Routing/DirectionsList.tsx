@@ -8,6 +8,7 @@ export interface IDirectionsList {
 };
 
 export const DirectionsList: FunctionComponent<IDirectionsList> = (props): ReactElement => {
+
     return (
         <div className='directionsList'>
             {

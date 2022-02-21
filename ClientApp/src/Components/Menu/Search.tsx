@@ -15,16 +15,17 @@ export const Search: FunctionComponent<ISearch> = (props): ReactElement => {
     const [inputTwo, setInputTwo] = useState<string>('');
 
     return (
-        <div id={props.id} className='search'>
+        <form id={props.id} className='search' autoComplete='false' onSubmit={e => {
+            e.preventDefault();
+            if (inputOne !== '' && inputTwo !== '') {
+                props.handleSearch(inputOne, inputTwo);
+            }
+        }}>
             <label id='inputOneLabel' className='inputLabel'>{props.inputOneLabel}</label>
-            <input id='inputOne' className='searchInput' type='text' value={inputOne} onChange={e => setInputOne(e.target.value)} />
+            <input id='inputOne' className='searchInput' type='text' value={inputOne} onChange={e => setInputOne(e.target.value)}/>
             <label id='inputTwoLabel' className='inputLabel'>{props.inputTwoLabel}</label>
-            <input id='inputTwo' className='searchInput' type='text' value={inputTwo} onChange={e => setInputTwo(e.target.value)} />
-            <button className='submit' onClick={() => {
-                if (inputOne !== '' && inputTwo !== '') {
-                    props.handleSearch(inputOne, inputTwo);
-                }
-            }}>Search</button>
-        </div>
+            <input id='inputTwo' className='searchInput' type='text' value={inputTwo} onChange={e => setInputTwo(e.target.value)}/>
+            <input type='submit' className='submit' value='submit' />
+        </form>
     );
 }
