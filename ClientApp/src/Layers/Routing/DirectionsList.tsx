@@ -11,9 +11,11 @@ export interface IDirectionsList {
 };
 
 export const DirectionsList: FunctionComponent<IDirectionsList> = (props): ReactElement => {
-    console.log(props.inChildList);
     return (
         <div className='directionsList'>
+            {
+                props.inChildList && <button onClick={props.clickOut}>Click Out</button>
+            }
             {
                 props.route.map(line => <DirectionsItem step={line} key={line.step.polyline.points} clickIn={props.clickIn} clickOut={props.clickOut} />)
             }
