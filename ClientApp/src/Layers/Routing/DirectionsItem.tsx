@@ -4,7 +4,8 @@ import '../../Styles/Layers/Routing/DirectionsItem.css';
 
 interface IDirectionsItem {
     step: IRoutingItem,
-    clickIn: (subStep: IRoutingItem[]) => void
+    clickIn: (subStep: IRoutingItem[]) => void,
+    clickOut: () => void
 }
 
 export const DirectionsItem: FunctionComponent<IDirectionsItem> = (props): ReactElement => {

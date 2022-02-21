@@ -24,7 +24,12 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
     const clickIn = (subSteps: IRoutingItem[]) => {
         setParentLines([lines].concat(parentLines));
         setLines(subSteps);
-    }
+    };
+
+    const clickOut = () => {
+        setLines(parentLines[0]);
+        setParentLines(parentLines.slice(1));
+    };
 
     useEffect(() => {
         if (route) {
@@ -57,6 +62,10 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
         lines.forEach(removeFromMap);
         setLines([]);
         setRoute(undefined);
+        if (parentLines.length) {
+            parentLines.map(line => line.map(removeFromMap));
+            setParentLines([]);
+        }
     };
 
     return (
@@ -71,8 +80,8 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
             {
                 route &&
                 <Menu className='directionMenu'>
-                        <DirectionsList route={lines} clickIn={clickIn} />
-                        <button id='clearSearch' onClick={clearSearch}>Clear</button>
+                    <DirectionsList route={lines} clickIn={clickIn} clickOut={clickOut} inChildList={parentLines.length ? true : false} />
+                    <button id='clearSearch' onClick={clearSearch}>Clear</button>
                 </Menu>
             }
         </>
