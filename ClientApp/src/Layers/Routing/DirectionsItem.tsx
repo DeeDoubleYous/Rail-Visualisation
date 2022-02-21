@@ -1,4 +1,6 @@
 ﻿import { FunctionComponent, ReactElement } from 'react';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+
 import { IRoutingItem } from '../../Interfaces';
 import '../../Styles/Layers/Routing/DirectionsItem.css';
 
@@ -28,11 +30,11 @@ export const DirectionsItem: FunctionComponent<IDirectionsItem> = (props): React
         let clickIn = (<></>);
 
         if (props.step.subSteps && props.clickIn) {
-            clickIn = (<button onClick={() => {
+            clickIn = (<ArrowForwardIosIcon onClick={() => {
                 if (props.clickIn && props.step.subSteps) {
                     props.clickIn(props.step.subSteps);
                 }
-            }}>Cick in</button>);
+            }}/>);
         }
         output = (
             <>

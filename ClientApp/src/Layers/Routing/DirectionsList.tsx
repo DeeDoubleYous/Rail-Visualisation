@@ -1,4 +1,5 @@
 ﻿import { FunctionComponent, ReactElement } from 'react';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 import { IRoutingItem } from '../../Interfaces';
 import { DirectionsItem } from './DirectionsItem';
@@ -14,7 +15,7 @@ export const DirectionsList: FunctionComponent<IDirectionsList> = (props): React
     return (
         <div className='directionsList'>
             {
-                props.inChildList && <button onClick={props.clickOut}>Click Out</button>
+                props.inChildList && <ArrowBackIosIcon onClick={props.clickOut} />
             }
             {
                 props.route.map(line => <DirectionsItem step={line} key={line.step.polyline.points} clickIn={props.clickIn} clickOut={props.clickOut} />)
