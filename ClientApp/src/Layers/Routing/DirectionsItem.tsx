@@ -3,7 +3,8 @@ import { IRoutingItem } from '../../Interfaces';
 import '../../Styles/Layers/Routing/DirectionsItem.css';
 
 interface IDirectionsItem {
-    step: IRoutingItem
+    step: IRoutingItem,
+    clickIn: (subStep: IRoutingItem[]) => void
 }
 
 export const DirectionsItem: FunctionComponent<IDirectionsItem> = (props): ReactElement => {
@@ -23,18 +24,30 @@ export const DirectionsItem: FunctionComponent<IDirectionsItem> = (props): React
     }
 
     if (props.step.step.travel_mode == 'WALKING') {
+        let clickIn = (<></>);
+
+        if (props.step.subSteps && props.clickIn) {
+            clickIn = (<button onClick={() => {
+                if (props.clickIn && props.step.subSteps) {
+                    props.clickIn(props.step.subSteps);
+                }
+            }}>Cick in</button>);
+        }
         output = (
             <>
                 <div className='endLocation'>{props.step.step.html_instructions}</div>
+                {
+                    clickIn
+                }
             </>
         );
     }
 
-    return (
-        <div className='directionItem'>
-            {
-                output
-            }
-        </div>
-    );
+        return (
+            <div className='directionItem'>
+                {
+                    output
+                }
+            </div>
+        );
 }

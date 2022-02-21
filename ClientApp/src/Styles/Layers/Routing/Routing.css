@@ -28,6 +28,7 @@
 .directionsList{
     grid-area: outputList;
     overflow-y: overlay;
+    overflow-x: hidden;
 }
 
 #clearSearch{

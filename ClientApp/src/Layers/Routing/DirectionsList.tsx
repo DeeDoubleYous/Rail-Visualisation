@@ -4,7 +4,8 @@ import { IRoutingItem } from '../../Interfaces';
 import { DirectionsItem } from './DirectionsItem';
 
 export interface IDirectionsList {
-    route: IRoutingItem[]
+    route: IRoutingItem[],
+    clickIn: (subSteps: IRoutingItem[]) => void
 };
 
 export const DirectionsList: FunctionComponent<IDirectionsList> = (props): ReactElement => {
@@ -12,7 +13,7 @@ export const DirectionsList: FunctionComponent<IDirectionsList> = (props): React
     return (
         <div className='directionsList'>
             {
-                props.route.map(line => <DirectionsItem step={line} key={line.step.polyline.points} />)
+                props.route.map(line => <DirectionsItem step={line} key={line.step.polyline.points} clickIn={props.clickIn} />)
             }
         </div>
     );

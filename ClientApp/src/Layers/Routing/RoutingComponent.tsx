@@ -14,11 +14,17 @@ export interface IRoutingComponent{
 export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): ReactElement => {
 
     const [route, setRoute] = useState<IRouting>(),
-        [lines, setLines] = useState<IRoutingItem[]>([]);
+        [lines, setLines] = useState<IRoutingItem[]>([]),
+        [parentLines, setParentLines] = useState<IRoutingItem[][]>([]);
 
     const addToMap = (line: IRoutingItem): void | LineString => line.subSteps ? line.subSteps.forEach(addToMap) : line.lineString?.addTo(props.layer);
 
     const removeFromMap = (line: IRoutingItem): void | LineString => line.subSteps ? line.subSteps.forEach(removeFromMap) : line.lineString?.remove();
+
+    const clickIn = (subSteps: IRoutingItem[]) => {
+        setParentLines([lines].concat(parentLines));
+        setLines(subSteps);
+    }
 
     useEffect(() => {
         if (route) {
@@ -38,6 +44,7 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
         switch (fetchedData.status){
             case 'OK':
                 setRoute(fetchedData);
+                setParentLines([]);
                 break;
             case 'ZERO_RESULTS':
                 alert('not found');
@@ -64,8 +71,8 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
             {
                 route &&
                 <Menu className='directionMenu'>
-                    <DirectionsList route={lines} />
-                    <button id='clearSearch' onClick={clearSearch}>Clear</button>
+                        <DirectionsList route={lines} clickIn={clickIn} />
+                        <button id='clearSearch' onClick={clearSearch}>Clear</button>
                 </Menu>
             }
         </>
