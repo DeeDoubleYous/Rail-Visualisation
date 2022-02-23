@@ -1,8 +1,7 @@
 ﻿import { FunctionComponent, ReactElement, useEffect, useState } from 'react';
 
-
 import { Menu, Search } from '../../Components';
-import { VectorLayer, LineString } from 'maptalks';
+import { VectorLayer, LineString, Coordinate } from 'maptalks';
 import { IRouting, IRoutingItem, IStep } from '../../Interfaces';
 import { createRouteLine } from '../../Utilities';
 import { DirectionsList } from './DirectionsList';
@@ -23,15 +22,16 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
 
     const removeFromMap = (line: IRoutingItem): void | LineString => line.subSteps ? line.subSteps.forEach(removeFromMap) : line.lineString?.remove();
 
-    const clickIn = (subSteps: IRoutingItem[]) => {
-        setParentLines([lines].concat(parentLines));
-        setLines(subSteps);
-    };
+    const centerMap = () => {
+        if (route) {
+            const map = props.layer.getMap();
 
-    const clickOut = () => {
-        setLines(parentLines[0]);
-        setParentLines(parentLines.slice(1));
-    };
+            const centerLng = (route.routes[0].legs[0].start_location.lng + route.routes[0].legs[0].end_location.lng) / 2;
+            const centerLat = (route.routes[0].legs[0].start_location.lat + route.routes[0].legs[0].end_location.lat) / 2;
+
+            map.setCenterAndZoom(new Coordinate([centerLng, centerLat]), 7);
+        }
+    }
 
     useEffect(() => {
         if (route) {
@@ -42,8 +42,20 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
             lines.forEach(removeFromMap);
 
             setLines(tempLines);
+
+            centerMap();
         }
     }, [route]);
+
+    const clickIn = (subSteps: IRoutingItem[]) => {
+        setParentLines([lines].concat(parentLines));
+        setLines(subSteps);
+    };
+
+    const clickOut = () => {
+        setLines(parentLines[0]);
+        setParentLines(parentLines.slice(1));
+    };
 
     const handleSearch = async (inputOne: string, inputTwo: string): Promise<void> => {
         const fetchedData = await props.fetchData(inputOne, inputTwo);
