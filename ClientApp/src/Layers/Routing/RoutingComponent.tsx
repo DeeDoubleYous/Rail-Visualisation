@@ -3,7 +3,7 @@
 import { Menu, Search } from '../../Components';
 import { VectorLayer, LineString, Coordinate } from 'maptalks';
 import { IRouting, IRoutingItem, IStep } from '../../Interfaces';
-import { createRouteLine } from '../../Utilities';
+import { createRouteLine, determinZoom } from '../../Utilities';
 import { DirectionsList } from './DirectionsList';
 
 export interface IRoutingComponent{
@@ -29,7 +29,7 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
             const centerLng = (route.routes[0].legs[0].start_location.lng + route.routes[0].legs[0].end_location.lng) / 2;
             const centerLat = (route.routes[0].legs[0].start_location.lat + route.routes[0].legs[0].end_location.lat) / 2;
 
-            map.setCenterAndZoom(new Coordinate([centerLng, centerLat]), 7);
+            map.setCenterAndZoom(new Coordinate([centerLng, centerLat]), determinZoom(route.routes[0].legs[0].start_location, route.routes[0].legs[0].end_location));
         }
     }
 
