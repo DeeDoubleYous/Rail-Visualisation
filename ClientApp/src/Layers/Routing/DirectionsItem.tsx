@@ -26,31 +26,25 @@ export const DirectionsItem: FunctionComponent<IDirectionsItem> = (props): React
         );
     }
 
-    if (props.step.step.travel_mode == 'WALKING') {
+    if (props.step.step.travel_mode == 'WALKING' && props.step.step.html_instructions) {
         let clickIn = (<></>);
 
-        if (props.step.subSteps && props.clickIn) {
+        if (props.step.subSteps && props.step.subSteps[0].step.html_instructions && props.clickIn) {
             clickIn = (<ArrowForwardIosIcon onClick={() => {
                 if (props.clickIn && props.step.subSteps) {
                     props.clickIn(props.step.subSteps);
                 }
             }}/>);
         }
+
         output = (
-            <>
+            <div className='directionItem'>
                 <div className='endLocation'>{props.step.step.html_instructions}</div>
                 {
                     clickIn
                 }
-            </>
-        );
-    }
-
-        return (
-            <div className='directionItem'>
-                {
-                    output
-                }
             </div>
         );
+    }
+                return output;
 }

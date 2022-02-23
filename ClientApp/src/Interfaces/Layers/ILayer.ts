@@ -3,7 +3,7 @@ import { ReactElement } from 'react';
 
 export interface ILayer {
     mapLayer: Layer,
-    className: string,
+    className:string,
     id: string,
     selected: boolean,
     layerTitle: string,

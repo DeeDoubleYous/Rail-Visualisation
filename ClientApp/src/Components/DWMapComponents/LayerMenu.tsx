@@ -1,4 +1,4 @@
-﻿import { FunctionComponent, ReactElement } from 'react';
+﻿import { ClassicFactory, ClassType, FunctionComponent, ReactElement } from 'react';
 
 import { Menu, LayerMenuItem } from '../';
 import { ILayer } from '../../Interfaces';
@@ -15,6 +15,7 @@ export const LayerMenu: FunctionComponent<ILayerMenu> = (props): ReactElement =>
         return `${date.getDay()}${date.getMonth()}${date.getFullYear()}${date.getHours()}${date.getMinutes()}${date.getSeconds()}${date.getMilliseconds()}`;
     };
 
+    const layers = [Routing, Stations];
 
     return (
         <Menu className='layerMenu'>
@@ -25,7 +26,13 @@ export const LayerMenu: FunctionComponent<ILayerMenu> = (props): ReactElement =>
             <LayerMenuItem className='Stations' itemTitle='Stations' primaryAction={() => {
                 const stations = new Stations('stations', `${generateDateTimeId()}`);
                 props.addLayer(stations);
-            }}/>
+            }} />
+            {
+                layers.map(layer => <LayerMenuItem className='menuItem' itemTitle='test' primaryAction={() => {
+                    const newLayer = new layer('string', `${generateDateTimeId()}`);
+                    props.addLayer(newLayer);
+                }} />)
+            }
         </Menu>
     );
 }

@@ -10,7 +10,7 @@ export class Routing implements ILayer {
 
     mapLayer: VectorLayer;
 
-    className: string;
+    className: string = 'Routing';
     id: string;
     layerTitle: string = 'Routing';
     selected: boolean = false;
