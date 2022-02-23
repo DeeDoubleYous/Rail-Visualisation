@@ -28,7 +28,7 @@ export const LayerMenu: FunctionComponent<ILayerMenu> = (props): ReactElement =>
     return (
         <Menu className='layerMenu'>
             {
-                layers.map(layer => <LayerMenuItem key={layer.title} className={layer.title} itemTitle={`${layer.title}`} primaryAction={() => {
+                layers.map(layer => <LayerMenuItem key={layer.title} className={layer.title} itemTitle={layer.title} primaryAction={() => {
                     const newLayer = new layer.layer(layer.title, generateDateTimeId());
                     props.addLayer(newLayer);
                 }}/>)
