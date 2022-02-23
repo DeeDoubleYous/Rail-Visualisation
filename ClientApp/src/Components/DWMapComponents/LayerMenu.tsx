@@ -15,23 +15,23 @@ export const LayerMenu: FunctionComponent<ILayerMenu> = (props): ReactElement =>
         return `${date.getDay()}${date.getMonth()}${date.getFullYear()}${date.getHours()}${date.getMinutes()}${date.getSeconds()}${date.getMilliseconds()}`;
     };
 
-    const layers = [Routing, Stations];
+    const layers = [
+        {
+            title: 'Routing',
+            layer: Routing
+        },
+        {
+            title: 'Stations',
+            layer: Stations
+        }];
 
     return (
         <Menu className='layerMenu'>
-            <LayerMenuItem className='Routing' itemTitle='Routing' primaryAction={() => {
-                const routing = new Routing('routing', `${generateDateTimeId()}`);
-                props.addLayer(routing);
-            }} />
-            <LayerMenuItem className='Stations' itemTitle='Stations' primaryAction={() => {
-                const stations = new Stations('stations', `${generateDateTimeId()}`);
-                props.addLayer(stations);
-            }} />
             {
-                layers.map(layer => <LayerMenuItem className='menuItem' itemTitle='test' primaryAction={() => {
-                    const newLayer = new layer('string', `${generateDateTimeId()}`);
+                layers.map(layer => <LayerMenuItem key={layer.title} className={layer.title} itemTitle={`${layer.title}`} primaryAction={() => {
+                    const newLayer = new layer.layer(layer.title, generateDateTimeId());
                     props.addLayer(newLayer);
-                }} />)
+                }}/>)
             }
         </Menu>
     );

@@ -10,7 +10,7 @@ export interface ILayer {
     removeLayer: () => void,
     drawComponents: () => ReactElement,
     getMapLayer: () => Layer,
-    getLayerTitle: () => string,
     getSelected: () => boolean,
-    setSelected: (selected: boolean) => void
+    setSelected: (selected: boolean) => void,
+    getLayerTitle: () => string
 }

@@ -9,8 +9,9 @@ export class Stations implements ILayer {
 
     className: string;
     id: string;
-    layerTitle: string = 'Stations';
     selected: boolean = false;
+
+    layerTitle: string = 'Stations';
 
     constructor(className: string, id: string) {
         this.className = className;
@@ -38,15 +39,15 @@ export class Stations implements ILayer {
         return this.mapLayer;
     }
 
-    getLayerTitle(): string {
-        return this.layerTitle;
-    }
-
     getSelected(): boolean {
         return this.selected;
     }
 
     setSelected(selected: boolean): void {
         this.selected = selected;
+    }
+
+    getLayerTitle(): string {
+        return this.layerTitle;
     }
 }

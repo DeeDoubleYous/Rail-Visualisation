@@ -31,7 +31,7 @@ var createStepLine = function (step) {
     }
     return {
         step: step,
-        lineString: createLine(decodePolyLine(step.polyline), colour, 3)
+        lineString: createLine(decodePolyLine(step.polyline), colour, 4)
     };
 };
 var createStepLineList = function (step) { return step.steps ? [{ step: step, subSteps: step.steps.map(createStepLine) }] : [createStepLine(step)]; };

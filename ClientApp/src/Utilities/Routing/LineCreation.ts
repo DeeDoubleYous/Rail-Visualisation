@@ -37,7 +37,7 @@ const createStepLine = (step: IStep): IRoutingItem => {
 
     return {
         step: step,
-        lineString: createLine(decodePolyLine(step.polyline), colour, 3)
+        lineString: createLine(decodePolyLine(step.polyline), colour, 4)
     }
 };
 

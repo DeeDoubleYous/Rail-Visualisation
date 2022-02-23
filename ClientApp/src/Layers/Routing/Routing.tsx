@@ -9,11 +9,11 @@ import { IRouting } from '../../Interfaces/Data/Routing';
 export class Routing implements ILayer {
 
     mapLayer: VectorLayer;
-
     className: string = 'Routing';
     id: string;
-    layerTitle: string = 'Routing';
     selected: boolean = false;
+
+    layerTitle: string = 'Routing';
 
     constructor(className: string, id: string) {
         this.className = className;
@@ -41,10 +41,6 @@ export class Routing implements ILayer {
         return this.mapLayer;
     }
 
-    getLayerTitle(): string {
-        return this.layerTitle;
-    }
-
     getSelected(): boolean {
         return this.selected;
     }
@@ -58,5 +54,9 @@ export class Routing implements ILayer {
         const text = await data.json() as IRouting;
         
         return text;
+    }
+
+    getLayerTitle(): string {
+        return this.layerTitle;
     }
 }
