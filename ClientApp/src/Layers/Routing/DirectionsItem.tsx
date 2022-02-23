@@ -17,12 +17,12 @@ export const DirectionsItem: FunctionComponent<IDirectionsItem> = (props): React
     if (props.step.step.transit_details) {
         const transitDetail = props.step.step.transit_details;
         output = (
-            <>
+            <div className='directionItem'>
                 <div className='htmlDirections'>{props.step.step.html_instructions}</div>
                 <div className='timeDirections'>{`Depature Time: ${transitDetail.departure_time.text} Arrival Time: ${transitDetail.arrival_time.text}`}</div>
                 <div className='company'>{`Company: ${transitDetail.line.agencies[0].name}`}</div>
                 <div className='transitDirections'>{`Vehicle headsign: ${transitDetail.headsign}`}</div>
-            </>
+            </div>
         );
     }
 
@@ -46,5 +46,5 @@ export const DirectionsItem: FunctionComponent<IDirectionsItem> = (props): React
             </div>
         );
     }
-                return output;
+    return output;
 }
