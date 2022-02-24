@@ -12,13 +12,14 @@ export interface IDirectionsList {
 };
 
 export const DirectionsList: FunctionComponent<IDirectionsList> = (props): ReactElement => {
+    let unique = 0;
     return (
         <div className='directionsList'>
             {
                 props.inChildList && <ArrowBackIosIcon onClick={props.clickOut} />
             }
             {
-                props.route.map(line => <DirectionsItem step={line} key={line.step.html_instructions} clickIn={props.clickIn} clickOut={props.clickOut} />)
+                props.route.map(line => <DirectionsItem step={line} key={`${unique++}`} clickIn={props.clickIn} clickOut={props.clickOut} />)
             }
         </div>
     );

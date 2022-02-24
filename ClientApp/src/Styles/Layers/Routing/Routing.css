@@ -21,7 +21,7 @@
     grid-template-areas: 
         'clearSearch'
         'outputList';
-    grid-template-rows: 5% 95%;
+    grid-template-rows: 1.2rem 20rem;
     overflow: hidden;
 }
 
