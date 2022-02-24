@@ -21,7 +21,6 @@
     background:none;
     color: black;
     height: 100%;
-    /*width: 100%;*/
     border: none;
     cursor: pointer;
 }
@@ -30,10 +29,3 @@
     transition: 0.1s;
     color: white;
 }
-/*
-.addLayerIcon{
-   
-    background: none;
-    fill: green;
-}*/
-

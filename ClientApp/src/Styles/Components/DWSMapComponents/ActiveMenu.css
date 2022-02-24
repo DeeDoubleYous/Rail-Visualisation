@@ -1,3 +1,40 @@
 ﻿.selected {
     background: green;
 }
+
+.activeMenu {
+    display: grid;
+    grid-template-areas:
+        'menuTitle'
+        'activeList';
+    grid-template-rows: 1.2rem 10rem;
+}
+
+.activeTitle{
+    grid-area: menuTitle;
+    border-bottom: black 0.1rem solid;
+}
+
+.activeLayers {
+    grid-area: activeList;
+    overflow: overlay;
+}
+
+.activeLayers::-webkit-scrollbar {
+    width: 0.5rem;
+    border-radius: 0.5rem;
+    background: transparent;
+}
+
+.activeLayers::-webkit-scrollbar-thumb {
+    background: rgb(255, 255, 255, 0.5);
+    border-radius: 1rem;
+}
+
+.activeLayers::-webkit-scrollbar-button {
+    height: 2%;
+}
+
+.activeMenuItem{
+    height: 15%;
+}

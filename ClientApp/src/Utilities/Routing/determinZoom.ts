@@ -1,6 +1,6 @@
 ﻿import { ILocation } from "../../Interfaces";
 
-const workOutLength = (startLoc: ILocation, endLoc: ILocation): number => {
+export const workOutLength = (startLoc: ILocation, endLoc: ILocation): number => {
     const x = (endLoc.lng - startLoc.lng);
     const y = (endLoc.lat - startLoc.lat);
 
@@ -18,5 +18,3 @@ export const determinZoom = (startLoc: ILocation, endLoc: ILocation): number => 
         return 10;
     }
 }
-
-
