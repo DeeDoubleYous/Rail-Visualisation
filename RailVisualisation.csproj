@@ -75,6 +75,9 @@
     <None Remove="ClientApp\src\Utilities\Routing\DirectionsMenu.tsx" />
     <None Remove="ClientApp\src\Utilities\Routing\index.ts" />
     <None Remove="ClientApp\src\Utilities\Routing\LineCreation.ts" />
+    <None Remove="ClientApp\src\Utilities\TextTools\index.ts" />
+    <None Remove="ClientApp\src\Utilities\TextTools\stripHTML.ts" />
+    <None Remove="ClientApp\src\Utilities\TextTools\StyledString.tsx" />
   </ItemGroup>
 
   <ItemGroup>

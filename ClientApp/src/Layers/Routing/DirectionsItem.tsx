@@ -2,6 +2,7 @@
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 import { IRoutingItem } from '../../Interfaces';
+import { stripHTML } from '../../Utilities';
 import '../../Styles/Layers/Routing/DirectionsItem.css';
 
 interface IDirectionsItem {
@@ -39,7 +40,7 @@ export const DirectionsItem: FunctionComponent<IDirectionsItem> = (props): React
 
         output = (
             <div className='directionItem'>
-                <div className='endLocation'>{props.step.step.html_instructions}</div>
+                <div className='endLocation'>{stripHTML(props.step.step.html_instructions)}</div>
                 {
                     clickIn
                 }
