@@ -37,11 +37,11 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
         if (route) {
             const tempLines = createRouteLine(route.routes[0]);
 
-            tempLines.forEach(addToMap);
+            setLines(tempLines);
 
             lines.forEach(removeFromMap);
 
-            setLines(tempLines);
+            tempLines.forEach(addToMap);
 
             centerMap();
         }

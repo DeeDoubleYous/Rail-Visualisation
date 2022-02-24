@@ -4,6 +4,7 @@ import { Menu, LayerMenuItem } from '../';
 import { ILayer } from '../../Interfaces';
 import { Routing } from '../../Layers/Routing';
 import { Stations } from '../../Layers/Stations';
+import { createDateString } from '../../Utilities';
 
 export interface ILayerMenu {
     addLayer: (layer: ILayer) => void
@@ -29,7 +30,7 @@ export const LayerMenu: FunctionComponent<ILayerMenu> = (props): ReactElement =>
         <Menu className='layerMenu'>
             {
                 layers.map(layer => <LayerMenuItem key={layer.title} className={layer.title} itemTitle={layer.title} primaryAction={() => {
-                    const newLayer = new layer.layer(layer.title, generateDateTimeId());
+                    const newLayer = new layer.layer(layer.title, createDateString(new Date(Date.now())));
                     props.addLayer(newLayer);
                 }}/>)
             }
