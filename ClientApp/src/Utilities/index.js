@@ -11,5 +11,5 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./Routing"), exports);
-__exportStar(require("./TextTools"), exports);
+__exportStar(require("./DataTools"), exports);
 //# sourceMappingURL=index.js.map

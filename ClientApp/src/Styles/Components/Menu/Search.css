@@ -1,12 +1,13 @@
 ﻿.search{
     display: grid;
     grid-template-rows: 15% 25% 15% 25% 20%;
+    grid-template-columns: 50% 50%;
     grid-template-areas: 
-        'inputOneLabel'
-        'inputOne'
-        'inputTwoLabel'
-        'inputTwo'
-        'submit';
+        'inputOneLabel inputOneLabel'
+        'inputOne dateOne'
+        'inputTwoLabel inputTwoLabel'
+        'inputTwo dateTwo'
+        'submit submit';
     height: 100%;
 }
 
@@ -47,4 +48,12 @@
 .inputLabel{
     font-size: 90%;
     height: 100%;
+}
+
+#dateOne{
+    grid-area: dateOne;
+}
+
+#dateTwo{
+    grid-area: dateTwo;
 }
