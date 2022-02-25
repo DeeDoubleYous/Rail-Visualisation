@@ -2,7 +2,7 @@
 
 import { Menu } from '../../Components';
 import { VectorLayer, LineString, Coordinate } from 'maptalks';
-import { IRouting, IRoutingItem, IStep } from '../../Interfaces';
+import { IRouting, IRoutingItem } from '../../Interfaces';
 import { createRouteLine, determinZoom } from '../../Utilities';
 import { DirectionsList } from './DirectionsList';
 import { RouteSearch } from './RouteSearch';
@@ -89,6 +89,8 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
                 <RouteSearch id='routingSearch'
                     inputOneLabel='Start Location'
                     inputTwoLabel='End Location'
+                    dateOneLabel='Start Time'
+                    dateTwoLabel='End Time'
                     handleSearch={handleSearch}
                 />
             </Menu>

@@ -1,7 +1,7 @@
 ﻿.routingMenu{
     position: absolute;
     right: 0%;
-    height: 20%;
+    height: 40%;
     width: 20%;
 }
 
@@ -15,7 +15,7 @@
     right: 0%;
     min-height: 20%;
     max-height: 50%;
-    top: 25%;
+    top: 45%;
     width: 20%;
     display: grid;
     grid-template-areas: 
