@@ -1,7 +1,7 @@
 ﻿import { FormEventHandler, FunctionComponent, ReactElement, useState } from 'react';
 import { SearchItem } from '../../Components';
 import { createDateString } from '../../Utilities';
-import '../../Styles/Components/Menu/Search.css';
+import '../../Styles/Layers/Routing/RouteSearch.css';
 
 export interface ISearch {
     id: string,
