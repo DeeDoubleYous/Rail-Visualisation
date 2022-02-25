@@ -32,11 +32,12 @@
     height: 100%;
     grid-area: submit;
     background: var(--secondary);
-    border: solid black 0.2rem;
+    border: solid var(--text-inv) 0.1rem;
+    border-radius: 0.1rem;
 }
 
 .submit:active{
-    background: var(--main);
+    background: var(--active-btn);
 }
 
 .searchInput{

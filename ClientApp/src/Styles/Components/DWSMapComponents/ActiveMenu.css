@@ -1,5 +1,6 @@
 ﻿.selected {
-    background: green;
+    background: var(--active-btn);
+    color: var(--text-inv);
 }
 
 .activeMenu {
@@ -8,6 +9,7 @@
         'menuTitle'
         'activeList';
     grid-template-rows: 1.2rem 10rem;
+    color: var(--text);
 }
 
 .activeTitle{

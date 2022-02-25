@@ -2,7 +2,8 @@
     --main: #0B2545;
     --secondary: #134074;
     --text: #EEF4ED;
-    --active-btn: rbg();
+    --text-inv: black;
+    --active-btn: #8DA9C4;
 }
 
 body {
