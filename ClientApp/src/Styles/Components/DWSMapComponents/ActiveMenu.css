@@ -1,5 +1,5 @@
 ﻿.selected {
-    background: var(--active-btn);
+    background: var(--active);
     color: var(--text-inv);
 }
 
@@ -14,7 +14,7 @@
 
 .activeTitle{
     grid-area: menuTitle;
-    border-bottom: black 0.1rem solid;
+    border-bottom: var(--text-inv) 0.1rem solid;
 }
 
 .activeLayers {
@@ -29,7 +29,7 @@
 }
 
 .activeLayers::-webkit-scrollbar-thumb {
-    background: rgb(255, 255, 255, 0.5);
+    background: var(--active);
     border-radius: 1rem;
 }
 

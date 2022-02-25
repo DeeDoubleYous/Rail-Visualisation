@@ -1,0 +1,48 @@
+﻿.directionMenu {
+    position: absolute;
+    right: 0%;
+    min-height: 20%;
+    max-height: 50%;
+    top: 45%;
+    width: 20%;
+    display: grid;
+    grid-template-areas:
+        'clearSearch'
+        'outputList';
+    grid-template-rows: 1.2rem 20rem;
+    overflow: hidden;
+}
+
+.directionsList {
+    grid-area: outputList;
+    overflow-y: overlay;
+    overflow-x: hidden;
+}
+
+#clearSearch {
+    grid-area: clearSearch;
+    outline: none;
+    background: var(--secondary);
+    border: solid var(--text-inv) 0.1rem;
+    color: var(--text);
+}
+
+#clearSearch:active {
+    background: var(--active);
+    color: var(--text-inv);
+}
+
+.directionsList::-webkit-scrollbar {
+    width: 0.5rem;
+    border-radius: 0.5rem;
+    background: transparent;
+}
+
+.directionsList::-webkit-scrollbar-thumb {
+    background: var(--active);
+    border-radius: 1rem;
+}
+
+.directionsList::-webkit-scrollbar-button {
+    height: 2%;
+}

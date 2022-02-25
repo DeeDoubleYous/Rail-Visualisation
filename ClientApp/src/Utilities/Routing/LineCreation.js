@@ -27,7 +27,7 @@ var createLine = function (points, lineColour, lineWidth) { return new maptalks_
 var createStepLine = function (step) {
     var colour = '#235689';
     if (step.travel_mode == 'TRANSIT' && step.transit_details) {
-        colour = step.transit_details.line.color;
+        colour = step.transit_details.line.color === '#000000' ? '#FFF' : step.transit_details.line.color;
     }
     return {
         step: step,

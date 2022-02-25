@@ -3,7 +3,7 @@
     --secondary: #134074;
     --text: #EEF4ED;
     --text-inv: black;
-    --active-btn: #8DA9C4;
+    --active: #8DA9C4;
 }
 
 body {
@@ -12,4 +12,5 @@ body {
     font-family: "Arial";
     margin: 0px;
     overflow: hidden;
+    color: var(--text);
 }

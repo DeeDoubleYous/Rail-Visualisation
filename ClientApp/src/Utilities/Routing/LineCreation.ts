@@ -32,7 +32,7 @@ const createStepLine = (step: IStep): IRoutingItem => {
     let colour = '#235689';
 
     if (step.travel_mode == 'TRANSIT' && step.transit_details) {
-        colour = step.transit_details.line.color;
+        colour = step.transit_details.line.color === '#000000' ? '#FFF' : step.transit_details.line.color;
     }
 
     return {

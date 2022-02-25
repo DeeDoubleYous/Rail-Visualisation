@@ -1,6 +1,6 @@
 ﻿.search{
     display: grid;
-    grid-template-rows: 10% 17.5% 10% 17.5% 10% 17.5% 17.5% ;
+    grid-template-rows: 10% 17.5% 10% 17.5% 10% 17.5% 1.25% 15% 1.25%;
     grid-template-areas: 
         'inputOneLabel'
         'inputOne'
@@ -8,7 +8,9 @@
         'inputTwo'
         'depatureTime'
         'depatureTimeLabel'
-        'submit';
+        '.'
+        'submit'
+        '.';
     height: 100%;
 }
 
@@ -37,7 +39,7 @@
 }
 
 .submit:active{
-    background: var(--active-btn);
+    background: var(--active);
 }
 
 .searchInput{

@@ -3,6 +3,7 @@ import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
 
 import { IRoutingItem } from '../../Interfaces';
 import { DirectionsItem } from './DirectionsItem';
+import '../../Styles/Layers/Routing/DirectionsList.css';
 
 export interface IDirectionsList {
     route: IRoutingItem[],

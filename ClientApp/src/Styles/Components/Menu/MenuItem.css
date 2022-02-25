@@ -19,7 +19,7 @@
     position: relative;
     grid-area: addLayer;
     background:none;
-    color: black;
+    color: var(--text-inv);
     height: 100%;
     border: none;
     cursor: pointer;
