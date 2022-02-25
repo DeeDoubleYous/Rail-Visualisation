@@ -9,7 +9,7 @@ export interface ISearch {
     inputTwoLabel: string,
     dateOneLabel: string,
     dateTwoLabel: string,
-    handleSearch: (inputOne: string, inputTwo: string) => void,
+    handleSearch: (inputOne: string, inputTwo: string, depature_time: Date) => void,
 }
 
 export const RouteSearch: FunctionComponent<ISearch> = (props): ReactElement => {
@@ -22,7 +22,7 @@ export const RouteSearch: FunctionComponent<ISearch> = (props): ReactElement => 
     const handleSubmit: FormEventHandler<HTMLFormElement> = (e) => {
         e.preventDefault();
         if (inputOne !== '' && inputTwo !== '') {
-            props.handleSearch(inputOne, inputTwo);
+            props.handleSearch(inputOne, inputTwo, dateOne);
         }
     };
 

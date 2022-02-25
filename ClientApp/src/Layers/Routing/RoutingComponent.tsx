@@ -10,7 +10,7 @@ import { RouteSearch } from './RouteSearch';
 export interface IRoutingComponent{
     className: string,
     layer: VectorLayer,
-    fetchData: (inputOne: string, inputTwo: string) => Promise<IRouting>
+    fetchData: (inputOne: string, inputTwo: string, depature_time: Date) => Promise<IRouting>
 }
 
 export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): ReactElement => {
@@ -58,8 +58,8 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
         setParentLines(parentLines.slice(1));
     };
 
-    const handleSearch = async (inputOne: string, inputTwo: string): Promise<void> => {
-        const fetchedData = await props.fetchData(inputOne, inputTwo);
+    const handleSearch = async (inputOne: string, inputTwo: string, dateOne: Date): Promise<void> => {
+        const fetchedData = await props.fetchData(inputOne, inputTwo, dateOne);
 
         switch (fetchedData.status){
             case 'OK':
