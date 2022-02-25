@@ -1,15 +1,13 @@
 ﻿.search{
     display: grid;
-    grid-template-rows: 7.5% 15% 7.5% 15% 7.5% 15% 7.5% 15% 10%;
+    grid-template-rows: 10% 17.5% 10% 17.5% 10% 17.5% 17.5% ;
     grid-template-areas: 
         'inputOneLabel'
         'inputOne'
-        'dateOneLabel'
-        'dateOne'
         'inputTwoLabel'
         'inputTwo'
-        'dateTwoLabel'
-        'dateTwo'
+        'depatureTime'
+        'depatureTimeLabel'
         'submit';
     height: 100%;
 }
@@ -34,11 +32,16 @@
     height: 100%;
     grid-area: submit;
     background: var(--secondary);
+    border: solid black 0.2rem;
+}
+
+.submit:active{
+    background: var(--main);
 }
 
 .searchInput{
     background: var(--secondary);
-    color: white;
+    color: var(--text);
     border: none;
     height: 100%;
 }
@@ -51,20 +54,13 @@
 .inputLabel{
     font-size: 90%;
     height: 100%;
+    color: var(--text);
 }
 
-#dateOne{
-    grid-area: dateOne;
+#depatureTime{
+    grid-area: depatureTime;
 }
 
-#dateTwo{
-    grid-area: dateTwo;
-}
-
-#dateOneLabel{
-    grid-area: dateOneLabel;
-}
-
-#dateTwoLabel{
-    grid-area: dateTwoLabel;
+#depatureTimeLabel{
+    grid-area: depatureTimeLabel;
 }

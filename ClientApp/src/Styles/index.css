@@ -1,6 +1,8 @@
 ﻿:root {
-    --main:rgb(14, 76, 127);
-    --secondary: rgb(129, 129, 129);
+    --main: #0B2545;
+    --secondary: #134074;
+    --text: #EEF4ED;
+    --active-btn: rbg();
 }
 
 body {

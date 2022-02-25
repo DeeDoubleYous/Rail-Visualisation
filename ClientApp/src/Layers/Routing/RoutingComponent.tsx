@@ -89,8 +89,7 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
                 <RouteSearch id='routingSearch'
                     inputOneLabel='Start Location'
                     inputTwoLabel='End Location'
-                    dateOneLabel='Start Time'
-                    dateTwoLabel='End Time'
+                    depatureTimeLabel='Depature Time'
                     handleSearch={handleSearch}
                 />
             </Menu>

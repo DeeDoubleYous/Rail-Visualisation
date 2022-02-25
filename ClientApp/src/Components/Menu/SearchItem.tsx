@@ -32,7 +32,7 @@ export const SearchItem: FunctionComponent<ISearchItem> = (props): ReactElement 
 
     return (
         <>
-            <label id={`${props.id}Label`}>{props.label}</label>
+            <label id={`${props.id}Label`} className='inputLabel'>{props.label}</label>
             {
                 inputElem
             }
