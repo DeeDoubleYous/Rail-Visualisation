@@ -1,13 +1,12 @@
 ﻿.search{
     display: grid;
     grid-template-rows: 15% 25% 15% 25% 20%;
-    grid-template-columns: 50% 50%;
     grid-template-areas: 
-        'inputOneLabel inputOneLabel'
-        'inputOne dateOne'
-        'inputTwoLabel inputTwoLabel'
-        'inputTwo dateTwo'
-        'submit submit';
+        'inputOneLabel'
+        'inputOne'
+        'inputTwoLabel'
+        'inputTwo'
+        'submit';
     height: 100%;
 }
 

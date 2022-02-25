@@ -1,10 +1,11 @@
 ﻿import { FunctionComponent, ReactElement, useEffect, useState } from 'react';
 
-import { Menu, Search } from '../../Components';
+import { Menu } from '../../Components';
 import { VectorLayer, LineString, Coordinate } from 'maptalks';
 import { IRouting, IRoutingItem, IStep } from '../../Interfaces';
 import { createRouteLine, determinZoom } from '../../Utilities';
 import { DirectionsList } from './DirectionsList';
+import { RouteSearch } from './RouteSearch';
 
 export interface IRoutingComponent{
     className: string,
@@ -85,7 +86,7 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
     return (
         <>
             <Menu className='routingMenu'>
-                <Search id='routingSearch'
+                <RouteSearch id='routingSearch'
                     inputOneLabel='Start Location'
                     inputTwoLabel='End Location'
                     handleSearch={handleSearch}

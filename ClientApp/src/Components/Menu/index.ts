@@ -1,3 +1,3 @@
 ﻿export * from './Menu';
 export * from './LayerMenuItem';
-export * from './Search';
+export * from './SearchItem';
