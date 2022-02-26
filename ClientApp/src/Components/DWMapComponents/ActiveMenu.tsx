@@ -12,7 +12,7 @@ export interface IActiveMenu {
 
 export const ActiveMenu: FunctionComponent<IActiveMenu> = (props): ReactElement => {
     return (
-        <Menu className='activeMenu'>
+        <Menu id='activeMenu'>
             <div className='activeTitle'>Active Layers</div>
             <div className='activeLayers'>
                 {

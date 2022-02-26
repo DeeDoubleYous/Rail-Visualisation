@@ -7,20 +7,11 @@
     z-index: 1;
 }
 
-.activeMenu {
+#activeMenu {
     position: absolute;
     top: 35%;
     width: 20%;
     min-height: 10%;
     max-height: 40%;
     overflow: hidden;
-}
-
-.layerMenu {
-    width: 20%;
-    max-height: 30%;
-    position: absolute;
-    left: 0.05%;
-    top: 0.6%;
-    color: var(--text);
 }

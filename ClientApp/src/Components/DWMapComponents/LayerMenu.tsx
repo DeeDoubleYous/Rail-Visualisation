@@ -5,16 +5,13 @@ import { ILayer } from '../../Interfaces';
 import { Routing } from '../../Layers/Routing';
 import { Stations } from '../../Layers/Stations';
 import { createDateString } from '../../Utilities';
+import '../../Styles/Components/DWSMapComponents/LayerMenu.css';
 
 export interface ILayerMenu {
     addLayer: (layer: ILayer) => void
 }
 
 export const LayerMenu: FunctionComponent<ILayerMenu> = (props): ReactElement => {
-    const generateDateTimeId = (): string => {
-        const date = new Date(Date.now());
-        return `${date.getDay()}${date.getMonth()}${date.getFullYear()}${date.getHours()}${date.getMinutes()}${date.getSeconds()}${date.getMilliseconds()}`;
-    };
 
     const layers = [
         {
@@ -27,7 +24,7 @@ export const LayerMenu: FunctionComponent<ILayerMenu> = (props): ReactElement =>
         }];
 
     return (
-        <Menu className='layerMenu'>
+        <Menu id='layerMenu'>
             {
                 layers.map(layer => <LayerMenuItem key={layer.title} className={layer.title} itemTitle={layer.title} primaryAction={() => {
                     const newLayer = new layer.layer(layer.title, createDateString(new Date(Date.now())));

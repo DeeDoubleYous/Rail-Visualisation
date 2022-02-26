@@ -1,3 +1,3 @@
 ﻿export interface IMenu {
-    className: string
+    id: string
 }

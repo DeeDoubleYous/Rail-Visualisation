@@ -85,7 +85,7 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
 
     return (
         <>
-            <Menu className='routingMenu'>
+            <Menu id='routingMenu'>
                 <RouteSearch id='routingSearch'
                     inputOneLabel='Start Location'
                     inputTwoLabel='End Location'
@@ -95,7 +95,7 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
             </Menu>
             {
                 route &&
-                <Menu className='directionMenu'>
+                <Menu id='directionMenu'>
                     <DirectionsList route={lines} clickIn={clickIn} clickOut={clickOut} inChildList={parentLines.length ? true : false} />
                     <button id='clearSearch' onClick={clearSearch}>Clear</button>
                 </Menu>

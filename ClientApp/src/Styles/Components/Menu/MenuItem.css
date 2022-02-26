@@ -1,5 +1,5 @@
 ﻿.menuItem {
-    border-bottom: solid var(--text-inv) 0.1rem;
+    border-bottom: solid var(--text) 0.1rem;
     background: var(--main);
     height: 10%;
     overflow: hidden;
@@ -15,17 +15,17 @@
     user-select: none;
 }
 
-.addLayer {
+.primaryAction {
     position: relative;
     grid-area: addLayer;
     background:none;
-    color: var(--text-inv);
+    color: var(--text);
     height: 100%;
     border: none;
     cursor: pointer;
 }
 
-.addLayer:active{
+.primaryAction:active{
     transition: 0.1s;
-    color: white;
+    color: var(--text-inv);
 }

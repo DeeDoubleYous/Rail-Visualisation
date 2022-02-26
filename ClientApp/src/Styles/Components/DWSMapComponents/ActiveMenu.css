@@ -3,7 +3,7 @@
     color: var(--text-inv);
 }
 
-.activeMenu {
+#activeMenu {
     display: grid;
     grid-template-areas:
         'menuTitle'
@@ -13,8 +13,9 @@
 }
 
 .activeTitle{
+    background: var(--secondary);
     grid-area: menuTitle;
-    border-bottom: var(--text-inv) 0.1rem solid;
+    border-bottom: var(--text) 0.1rem solid;
 }
 
 .activeLayers {

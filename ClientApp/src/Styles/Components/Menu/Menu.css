@@ -1,4 +1,4 @@
-﻿#menu{
+﻿.menu{
     z-index: 3;
     background: var(--main);
     overflow-y: overlay;
@@ -6,17 +6,17 @@
     border-radius: 0.5rem;
 }
 
-#menu::-webkit-scrollbar {
+.menu::-webkit-scrollbar {
     width: 0.5rem;
     border-radius: 0.5rem;
     background: transparent;
 }
 
-#menu::-webkit-scrollbar-thumb{
+.menu::-webkit-scrollbar-thumb{
     background: rgb(255, 255, 255, 0.5);
     border-radius: 1rem;
 }
 
-#menu::-webkit-scrollbar-button{
+.menu::-webkit-scrollbar-button{
     height: 2%;
 }

@@ -1,0 +1,8 @@
+﻿#layerMenu {
+    width: 20%;
+    max-height: 30%;
+    position: absolute;
+    left: 0.05%;
+    top: 0.6%;
+    color: var(--text);
+}

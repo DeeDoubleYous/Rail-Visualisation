@@ -34,15 +34,17 @@
     height: 100%;
     grid-area: submit;
     background: var(--secondary);
-    border: solid var(--text-inv) 0.1rem;
+    border: solid var(--text) 0.1rem;
     border-radius: 0.1rem;
+    color: var(--text);
 }
 
 .submit:active{
     background: var(--active);
+    color: var(--text-inv);
 }
 
-.searchInput{
+.searchInput {
     background: var(--secondary);
     color: var(--text);
     border: none;
@@ -58,6 +60,7 @@
     font-size: 90%;
     height: 100%;
     color: var(--text);
+    text-align: center;
 }
 
 #depatureTime{

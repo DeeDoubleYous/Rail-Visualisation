@@ -1,7 +1,7 @@
 ﻿import { LineString } from 'maptalks';
 import { decode } from '@googlemaps/polyline-codec';
 import { IRoutingItem } from '../../Interfaces';
-import { ILocation, ILeg, IStep, IRoutes, IPolyLine } from '../../Interfaces/Data';
+import { ILeg, IStep, IRoutes, IPolyLine } from '../../Interfaces/Data';
 
 
 const decodePolyLine = (line: IPolyLine) => {

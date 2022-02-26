@@ -9,7 +9,7 @@ export const LayerMenuItem: FunctionComponent<IMenuItem> = (props): ReactElement
         <div className={`menuItem ${props.className}`}>
             <div className='itemTitle' onClick={props.secondaryAction}>{props.itemTitle}</div>
             {
-                props.primaryAction && <AddIcon className='addLayer' onClick={props.primaryAction}/>
+                props.primaryAction && <AddIcon className='primaryAction' onClick={props.primaryAction}/>
             }
         </div>
     );

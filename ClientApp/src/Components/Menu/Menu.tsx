@@ -5,7 +5,7 @@ import '../../Styles/Components/Menu/Menu.css';
 
 export const Menu: FunctionComponent<IMenu> = (props): ReactElement => {
     return (
-        <div className={props.className} id='menu' >
+        <div id={props.id} className='menu' >
             {
                 props.children
             }
