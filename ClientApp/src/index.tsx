@@ -11,7 +11,9 @@ const baseUrl: string | undefined = document.getElementsByTagName('base')[0].get
 const rootElement = document.getElementById('root');
 
 ReactDOM.render(
-    <Provider store={store}>
-        <App />
-    </Provider>,
+    <BrowserRouter basename={baseUrl}>
+        <Provider store={store}>
+            <App />
+        </Provider>
+     </BrowserRouter>,
   rootElement);

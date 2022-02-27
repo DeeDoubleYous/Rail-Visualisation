@@ -80,6 +80,7 @@
     <None Remove="ClientApp\src\Utilities\DataTools\index.ts" />
     <None Remove="ClientApp\src\Utilities\DataTools\stripHTML.ts" />
     <None Remove="ClientApp\src\Utilities\DataTools\StyledString.tsx" />
+    <None Remove="ClientApp\src\Utilities\Routing\routingSlice.ts" />
     <None Remove="ClientApp\src\Utilities\store.ts" />
   </ItemGroup>
 
