@@ -33,7 +33,7 @@ export class Routing implements ILayer {
 
     drawComponents(): ReactElement {
         return (
-            <RoutingComponent className={this.className} layer={this.mapLayer} fetchData={this.fetchData} />
+            <RoutingComponent className={this.className} layer={this.mapLayer} fetchData={this.fetchData} key={this.id} />
         );
     }
 
