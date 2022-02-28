@@ -6,7 +6,6 @@ var store = (0, toolkit_1.configureStore)({
     reducer: {
         routingReducer: routingSlice_1.default
     },
-    middleware: function (getDefaultMiddleWare) { return getDefaultMiddleWare(); },
 });
 exports.default = store;
 //# sourceMappingURL=store.js.map

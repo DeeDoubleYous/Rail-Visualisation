@@ -6,7 +6,7 @@ import { RoutingComponent } from './RoutingComponent';
 import '../../Styles/Layers/Routing/Routing.css';
 import { IRouting } from '../../Interfaces/Data/Routing';
 import store from '../../Utilities/store';
-import { addLayer } from '../../Utilities';
+import { addLayer, removeLayer } from '../../Utilities';
 
 export class Routing implements ILayer {
 
@@ -37,6 +37,7 @@ export class Routing implements ILayer {
 
     removeLayer(): void {
         this.mapLayer.remove();
+        store.dispatch(removeLayer(this.id));
     }
 
     drawComponents(): ReactElement {

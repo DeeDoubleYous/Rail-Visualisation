@@ -28,8 +28,9 @@ export const routingSlice = createSlice({
             state.layers = state.layers.filter(layer => layer.id !== action.payload.id).concat(action.payload)
         }
     }
+
 });
 
-export const { addLayer, updateLayer } = routingSlice.actions;
+export const { addLayer, removeLayer, updateLayer } = routingSlice.actions;
 
 export default routingSlice.reducer;

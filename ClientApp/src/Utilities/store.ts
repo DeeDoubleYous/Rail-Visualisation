@@ -5,7 +5,6 @@ const store = configureStore({
     reducer: {
         routingReducer
     },
-    middleware: (getDefaultMiddleWare) => getDefaultMiddleWare(),
 });
 
 export default store;

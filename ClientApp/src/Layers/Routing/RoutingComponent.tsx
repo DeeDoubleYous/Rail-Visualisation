@@ -27,7 +27,7 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
             id: props.id,
             route: newRoute
         }));
-    }
+    };
 
     const addToMap = (line: IRoutingItem): void | LineString => line.subSteps ? line.subSteps.forEach(addToMap) : line.lineString?.addTo(props.layer);
 
