@@ -3,11 +3,12 @@
 import { Menu } from '../../Components';
 import { VectorLayer, LineString, Coordinate } from 'maptalks';
 import { IRouting, IRoutingItem } from '../../Interfaces';
-import { createRouteLine, determinZoom } from '../../Utilities';
+import { createRouteLine, determinZoom, useAppDispatch, useAppSelector, updateLayer } from '../../Utilities';
 import { DirectionsList } from './DirectionsList';
 import { RouteSearch } from './RouteSearch';
 
 export interface IRoutingComponent{
+    id: string,
     className: string,
     layer: VectorLayer,
     fetchData: (inputOne: string, inputTwo: string, depature_time: Date) => Promise<IRouting>
@@ -15,9 +16,18 @@ export interface IRoutingComponent{
 
 export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): ReactElement => {
 
-    const [route, setRoute] = useState<IRouting>(),
-        [lines, setLines] = useState<IRoutingItem[]>([]),
+    const dispatch = useAppDispatch();
+
+    const route = useAppSelector(state => state.routingReducer.layers.filter(layer => layer.id === props.id)[0]?.route);
+    const [lines, setLines] = useState<IRoutingItem[]>([]),
         [parentLines, setParentLines] = useState<IRoutingItem[][]>([]);
+
+    const setRoute = (newRoute: IRouting | undefined) => {
+        dispatch(updateLayer({
+            id: props.id,
+            route: newRoute
+        }));
+    }
 
     const addToMap = (line: IRoutingItem): void | LineString => line.subSteps ? line.subSteps.forEach(addToMap) : line.lineString?.addTo(props.layer);
 
