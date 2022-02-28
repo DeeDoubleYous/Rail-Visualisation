@@ -5,6 +5,8 @@ import { RoutingComponent } from './RoutingComponent';
 
 import '../../Styles/Layers/Routing/Routing.css';
 import { IRouting } from '../../Interfaces/Data/Routing';
+import store from '../../Utilities/store';
+import { addLayer, removeLayer } from '../../Utilities';
 
 export class Routing implements ILayer {
 
@@ -16,11 +18,17 @@ export class Routing implements ILayer {
     layerTitle: string = 'Routing';
 
     constructor(className: string, id: string) {
+
         this.className = className;
         this.id = id;
 
         this.mapLayer = this.contructMapLayer();
-
+        if (id !== '1') {
+            store.dispatch(addLayer({
+                id: id,
+                route: undefined
+            }));
+        }
     }
 
     private contructMapLayer(): VectorLayer {
@@ -29,11 +37,12 @@ export class Routing implements ILayer {
 
     removeLayer(): void {
         this.mapLayer.remove();
+        store.dispatch(removeLayer(this.id));
     }
 
     drawComponents(): ReactElement {
         return (
-            <RoutingComponent className={this.className} layer={this.mapLayer} fetchData={this.fetchData} key={this.id} />
+            <RoutingComponent id={this.id} className={this.className} layer={this.mapLayer} fetchData={this.fetchData} key={this.id} />
         );
     }
 
