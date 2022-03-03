@@ -43,7 +43,7 @@ const DWMap: FunctionComponent<IMap> = (props): ReactElement => {
     const addLayer = (layer: ILayer) => {
         changeSelectedLayer(layer);
         setActiveLayers(activeLayers.concat(layer));
-        map?.addLayer(layer.getMapLayer())
+        map?.addLayer(layer.getMapLayer());
     };
 
     const removeLayer = (layer: ILayer) => {

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Builder;
 
 using System.Configuration;
 using System.Net;
@@ -12,9 +13,9 @@ namespace RailVisualisation.Controllers
     {
         HttpClient client;
 
-        public RoutingController()
+        public RoutingController(HttpClient client)
         {
-            this.client = new HttpClient();
+            this.client = client;
         }
 
         [HttpGet]
