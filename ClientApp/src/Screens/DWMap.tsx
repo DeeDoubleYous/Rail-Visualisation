@@ -2,9 +2,10 @@
 import * as Maptalks from 'maptalks';
 
 import { IMap, ILayer } from '../Interfaces';
-import { LayerMenu, LayerMenuItem, Menu } from '../Components';
-import '../Styles/Screens/DWMap.css';
+import { LayerMenu } from '../Components';
 import { ActiveMenu } from '../Components/DWMapComponents/ActiveMenu';
+import { logLayerUsage } from '../Utilities/Logging';
+import '../Styles/Screens/DWMap.css';
 
 const DWMap: FunctionComponent<IMap> = (props): ReactElement => {
     const [map, setMap] = useState<Maptalks.Map>();
@@ -40,7 +41,11 @@ const DWMap: FunctionComponent<IMap> = (props): ReactElement => {
         layer.setSelected(true);
     };
 
-    const addLayer = (layer: ILayer) => {
+    const addLayer = async (layer: ILayer, layerId: number) => {
+        const timeStamp = new Date(Date.now());
+
+        const success = await logLayerUsage(layerId, timeStamp);
+
         changeSelectedLayer(layer);
         setActiveLayers(activeLayers.concat(layer));
         map?.addLayer(layer.getMapLayer());

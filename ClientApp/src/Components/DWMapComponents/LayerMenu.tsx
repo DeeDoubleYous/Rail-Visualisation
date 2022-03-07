@@ -8,27 +8,25 @@ import { createDateString } from '../../Utilities';
 import '../../Styles/Components/DWSMapComponents/LayerMenu.css';
 
 export interface ILayerMenu {
-    addLayer: (layer: ILayer) => void
+    addLayer: (layer: ILayer, layerId: number) => void
 }
 
 export const LayerMenu: FunctionComponent<ILayerMenu> = (props): ReactElement => {
 
     const layers = [
         {
+            layerId: 1,
             title: 'Routing',
             layer: Routing
         },
-        {
-            title: 'Stations',
-            layer: Stations
-        }];
+        ];
 
     return (
         <Menu id='layerMenu'>
             {
                 layers.map(layer => <LayerMenuItem key={layer.title} className={layer.title} itemTitle={layer.title} primaryAction={() => {
                     const newLayer = new layer.layer(layer.title, createDateString(new Date(Date.now())));
-                    props.addLayer(newLayer);
+                    props.addLayer(newLayer, layer.layerId);
                 }}/>)
             }
         </Menu>

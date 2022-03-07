@@ -2,7 +2,6 @@
 {
     public class LoggingOutputRequest
     {
-
         public int LayerId
         {
             get; set;

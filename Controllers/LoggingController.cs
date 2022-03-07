@@ -38,7 +38,10 @@ namespace RailVisualisation.Controllers
                 {
                     LoggingOutputRequest log = new LoggingOutputRequest(values.LayerId, values.TimeStamp, statsKey);
 
-                    return await this.client.PostAsJsonAsync<LoggingOutputRequest>(statsUrl, log);
+                    using( var awaiter =  await this.client.PostAsJsonAsync<LoggingOutputRequest>($"{statsUrl}/log", log))
+                    {
+                        return awaiter;
+                    }
                 } 
                 
             } catch(Exception e)
