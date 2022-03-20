@@ -29,6 +29,9 @@ namespace RailVisualisation.Controllers
             }
         }
 
+        /***
+         * Method for talking to the provided stats server to create a log of a layer being added.
+         */
         [HttpPost]
         public async Task<HttpResponseMessage> Post([FromBody] LoggingCreateRequest values)
         {
@@ -38,7 +41,7 @@ namespace RailVisualisation.Controllers
                 {
                     LoggingOutputRequest log = new LoggingOutputRequest(values.LayerId, values.TimeStamp, statsKey);
 
-                    using( var awaiter =  await this.client.PostAsJsonAsync<LoggingOutputRequest>($"{statsUrl}/log", log))
+                    using( var awaiter =  await this.client.PostAsJsonAsync<LoggingOutputRequest>(statsUrl, log))
                     {
                         return awaiter;
                     }
@@ -52,6 +55,50 @@ namespace RailVisualisation.Controllers
             var message = new HttpResponseMessage();
             message.StatusCode = HttpStatusCode.InternalServerError;
             return message;
+        }
+
+        /***
+         * Get the full break down for the overview of the 
+         */
+        [HttpGet]
+        public async Task<string> GetLayerTotals()
+        {
+            try
+            {
+                using (var stream = await client.GetStreamAsync($"{statsUrl}?key={statsKey}"))
+                {
+                    using (var results = new StreamReader(stream))
+                    {
+                        return results.ReadToEnd();
+                    }
+                }
+            }catch(Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+            return "Internal server error";
+        }
+
+        [HttpGet]
+        [Route("total")]
+        public async Task<string> GetTotal()
+        {
+            try
+            {
+                using(var stream = await client.GetStreamAsync($"{statsUrl}/total?key={statsKey}"))
+                {
+                    using(var results = new StreamReader(stream))
+                    {
+                        return results.ReadToEnd();
+                    }
+                }
+            }catch(Exception e)
+            {
+                Console.WriteLine(e);
+            }
+
+            return "Internal Server Error";
         }
     }
 }

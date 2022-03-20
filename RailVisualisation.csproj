@@ -89,6 +89,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Remove="ClientApp\src\Screens\StatsDashboard.tsx" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="app.config">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>

@@ -1,0 +1,12 @@
+﻿.Stats{
+    height: 100vh;
+    background: var(--main);
+}
+
+.pieData{
+    position: absolute;
+    width: 25%;
+    height: 25%;
+    top: 0;
+    left: 0;
+}

@@ -44,7 +44,7 @@ const DWMap: FunctionComponent<IMap> = (props): ReactElement => {
     const addLayer = async (layer: ILayer, layerId: number) => {
         const timeStamp = new Date(Date.now());
 
-        const success = await logLayerUsage(layerId, timeStamp);
+        logLayerUsage(layerId, timeStamp);
 
         changeSelectedLayer(layer);
         setActiveLayers(activeLayers.concat(layer));
