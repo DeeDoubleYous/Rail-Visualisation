@@ -29,15 +29,13 @@ const StatsDashboard: FunctionComponent = (): ReactElement => {
         }
     };
 
-    const createChartData = (): ChartData<'pie'> => {
-        return {
-            labels: layerTotals.map(layer => layer.layerTitle),
-            datasets: [{
-                data: layerTotals.map(layer => layer.uses),
-                backgroundColor: layerTotals.map(layer => layer.layerColour),
-                borderColor: '#000'
-            }],
-        }
+    const chartData: ChartData<'pie'> = {
+        labels: layerTotals.map(layer => layer.layerTitle),
+        datasets: [{
+            data: layerTotals.map(layer => layer.uses),
+            backgroundColor: layerTotals.map(layer => layer.layerColour),
+            borderColor: '#000'
+        }],
     };
 
     useEffect(() => {
@@ -56,7 +54,7 @@ const StatsDashboard: FunctionComponent = (): ReactElement => {
                     :
                     <div className='pieData'>
                         <Pie
-                            data={createChartData()}
+                            data={chartData}
                             height='50'
                             width='50'
                             color='#000'
