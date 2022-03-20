@@ -1,13 +1,13 @@
 ﻿import { FunctionComponent, ReactElement, useEffect, useState } from 'react';
 import * as Maptalks from 'maptalks';
 
-import { IMap, ILayer } from '../Interfaces';
+import { ILayer } from '../Interfaces';
 import { LayerMenu } from '../Components';
 import { ActiveMenu } from '../Components/DWMapComponents/ActiveMenu';
 import { logLayerUsage } from '../Utilities/Logging';
 import '../Styles/Screens/DWMap.css';
 
-const DWMap: FunctionComponent<IMap> = (props): ReactElement => {
+const DWMap: FunctionComponent = (): ReactElement => {
     const [map, setMap] = useState<Maptalks.Map>();
     const [selectedLayer, setSelectedLayer] = useState<ILayer | null>();
     const [activeLayers, setActiveLayers] = useState<ILayer[]>([]);
@@ -68,7 +68,7 @@ const DWMap: FunctionComponent<IMap> = (props): ReactElement => {
     };
 
     return (
-        <div className={props.className}>
+        <div className='DWMap'>
             <LayerMenu addLayer={addLayer} />
             <div id='map' />
             <ActiveMenu activeLayers={activeLayers} removeLayer={removeLayer} changeSelectedLayer={changeSelectedLayer} />

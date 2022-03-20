@@ -1,18 +1,9 @@
 ﻿import { FunctionComponent, ReactElement, useEffect, useState } from 'react';
-import { Pie } from 'react-chartjs-2';
-import { Chart, ChartData, ArcElement, Legend, Tooltip } from 'chart.js';
+import { ILayerTotals } from '../Interfaces';
+import { LayerPieChart } from '../Components';
 import '../Styles/Screens/StatsDashboard.css';
-import { Layer } from 'maptalks';
-
-interface ILayerTotals {
-    layerId: number,
-    layerTitle: string,
-    layerColour: string,
-    uses: number
-}
 
 const StatsDashboard: FunctionComponent = (): ReactElement => {
-    Chart.register(ArcElement, Legend, Tooltip);
     const [loading, setLoading] = useState<boolean>(true);
     const [layerTotals, setLayerTotals] = useState<ILayerTotals[]>([]);
     const [total, setTotal] = useState<number>(0);
@@ -29,15 +20,6 @@ const StatsDashboard: FunctionComponent = (): ReactElement => {
         }
     };
 
-    const chartData: ChartData<'pie'> = {
-        labels: layerTotals.map(layer => layer.layerTitle),
-        datasets: [{
-            data: layerTotals.map(layer => layer.uses),
-            backgroundColor: layerTotals.map(layer => layer.layerColour),
-            borderColor: '#000'
-        }],
-    };
-
     useEffect(() => {
         fetchData();
     }, []);
@@ -52,14 +34,7 @@ const StatsDashboard: FunctionComponent = (): ReactElement => {
                 loading ?
                     <p>Loading...</p>
                     :
-                    <div className='pieData'>
-                        <Pie
-                            data={chartData}
-                            height='50'
-                            width='50'
-                            color='#000'
-                            />
-                    </div>
+                    <LayerPieChart className='pieData' layerTotals={layerTotals} />
             }
         </div>
     );
