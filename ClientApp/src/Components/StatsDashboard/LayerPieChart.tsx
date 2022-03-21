@@ -1,6 +1,6 @@
 ﻿import { FunctionComponent, ReactElement } from 'react';
 import { Pie } from 'react-chartjs-2';
-import { ArcElement, Chart, ChartData, Tooltip, Legend } from 'chart.js';
+import { ArcElement, Chart, ChartData, ChartOptions, Tooltip, Legend } from 'chart.js';
 
 import { ILayerTotals } from '../../Interfaces';
 
@@ -21,11 +21,15 @@ export const LayerPieChart: FunctionComponent<ILayerPieChart> = (props): ReactEl
         }],
     };
 
+    const chartOptions: ChartOptions<'pie'> = {
+        color: '#FFF'
+    }
+
     return (
         <div className={props.className}>
             <Pie
                 data={chartData}
-                color='#FFF'
+                options={chartOptions}
             />
         </div>
     );
