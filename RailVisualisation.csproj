@@ -43,6 +43,7 @@
     <None Remove="ClientApp\src\Components\Menu\search.tsx" />
     <None Remove="ClientApp\src\Components\Menu\SearchItem.tsx" />
     <None Remove="ClientApp\src\Components\StatsDashboard\index.ts" />
+    <None Remove="ClientApp\src\Components\StatsDashboard\LayerBreakDown.tsx" />
     <None Remove="ClientApp\src\Components\StatsDashboard\layerPieChart.tsx" />
     <None Remove="ClientApp\src\Interfaces\Components\IMenu.ts" />
     <None Remove="ClientApp\src\Interfaces\Components\index.ts" />

@@ -25,9 +25,7 @@ export const LayerPieChart: FunctionComponent<ILayerPieChart> = (props): ReactEl
         <div className={props.className}>
             <Pie
                 data={chartData}
-                height='50'
-                width='50'
-                color='#000'
+                color='#FFF'
             />
         </div>
     );

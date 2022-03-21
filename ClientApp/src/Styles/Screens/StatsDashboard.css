@@ -3,10 +3,22 @@
     background: var(--main);
 }
 
-.pieData{
+.pieData {
     position: absolute;
-    width: 25%;
-    height: 25%;
+    width: 30%;
+    /*height: 55%;*/
     top: 0;
     left: 0;
+    background: var(--secondary);
+    border-radius: 0.5rem;
+}
+
+.pieData canvas {
+    border: solid 0.2rem var(--text);
+    border-radius: 0.5rem;
+}
+
+.layerBreakDown{
+    position: absolute;
+    left: 35%;
 }

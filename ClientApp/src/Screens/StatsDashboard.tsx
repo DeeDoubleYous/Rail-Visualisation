@@ -1,6 +1,6 @@
 ﻿import { FunctionComponent, ReactElement, useEffect, useState } from 'react';
 import { ILayerTotals } from '../Interfaces';
-import { LayerPieChart } from '../Components';
+import { LayerBreakDown, LayerPieChart } from '../Components';
 import '../Styles/Screens/StatsDashboard.css';
 
 const StatsDashboard: FunctionComponent = (): ReactElement => {
@@ -34,7 +34,10 @@ const StatsDashboard: FunctionComponent = (): ReactElement => {
                 loading ?
                     <p>Loading...</p>
                     :
-                    <LayerPieChart className='pieData' layerTotals={layerTotals} />
+                    <div>
+                        <LayerPieChart className='pieData' layerTotals={layerTotals} />
+                        <LayerBreakDown className='layerBreakDown' layerTotals={layerTotals} total={total} />
+                    </div>
             }
         </div>
     );
