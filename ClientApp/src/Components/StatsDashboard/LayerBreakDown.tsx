@@ -13,7 +13,7 @@ export const LayerBreakDown: FunctionComponent<ILayerBreakDown> = (props): React
             {
                 props.layerTotals.map(layer =>
                     <div key={`${layer.layerId}`} className='layerTotal'>
-                        {`Layer Title: ${layer.layerTitle} Uses: ${layer.uses} Out of Total: ${(layer.uses / props.total) * 100}%`}
+                        {`Layer Title: ${layer.layerTitle} Uses: ${layer.uses} Out of Total: ${Math.round((layer.uses / props.total) * 100)}%`}
                     </div>   
                 )
             }

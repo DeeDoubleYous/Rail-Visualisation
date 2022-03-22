@@ -1,14 +1,14 @@
 ﻿.Stats{
     height: 100vh;
     background: var(--main);
+    display: grid;
+    grid-template-areas: 'pieChart breakDown';
+    grid-template-columns: 30% 70%;
 }
 
 .pieData {
-    position: absolute;
-    width: 30%;
-    /*height: 55%;*/
-    top: 0;
-    left: 0;
+    grid-area: pieChart;
+    width: 100%;
     background: var(--secondary);
     border-radius: 0.5rem;
 }
@@ -19,6 +19,8 @@
 }
 
 .layerBreakDown{
-    position: absolute;
-    left: 35%;
+    grid-area: breakDown;
+    border: solid 0.2rem var(--text);
+    border-radius: 0.5rem;
+    background: var(--secondary);
 }

@@ -1,9 +1,9 @@
 ﻿#directionMenu {
-    position: absolute;
+    position: relative;
     right: 0%;
     min-height: 20%;
     max-height: 50%;
-    top: 45%;
+    top: 50%;
     width: 20%;
     display: grid;
     grid-template-areas:

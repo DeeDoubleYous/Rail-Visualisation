@@ -3,7 +3,6 @@
 import { Menu, LayerMenuItem } from '../';
 import { ILayer } from '../../Interfaces';
 import { Routing } from '../../Layers/Routing';
-import { Stations } from '../../Layers/Stations';
 import { createDateString } from '../../Utilities';
 import '../../Styles/Components/DWSMapComponents/LayerMenu.css';
 

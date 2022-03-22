@@ -35,6 +35,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\Components\App\index.ts" />
+    <None Remove="ClientApp\src\Components\App\NavBar.tsx" />
     <None Remove="ClientApp\src\Components\DWMapComponents\ActiveMenu.tsx" />
     <None Remove="ClientApp\src\Components\DWMapComponents\index.ts" />
     <None Remove="ClientApp\src\Components\Menu.tsx" />
