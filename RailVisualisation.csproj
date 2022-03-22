@@ -35,6 +35,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\Components\App\index.ts" />
+    <None Remove="ClientApp\src\Components\App\NavBar.tsx" />
     <None Remove="ClientApp\src\Components\DWMapComponents\ActiveMenu.tsx" />
     <None Remove="ClientApp\src\Components\DWMapComponents\index.ts" />
     <None Remove="ClientApp\src\Components\Menu.tsx" />
@@ -42,6 +44,9 @@
     <None Remove="ClientApp\src\Components\Menu\index.ts" />
     <None Remove="ClientApp\src\Components\Menu\search.tsx" />
     <None Remove="ClientApp\src\Components\Menu\SearchItem.tsx" />
+    <None Remove="ClientApp\src\Components\StatsDashboard\index.ts" />
+    <None Remove="ClientApp\src\Components\StatsDashboard\LayerBreakDown.tsx" />
+    <None Remove="ClientApp\src\Components\StatsDashboard\layerPieChart.tsx" />
     <None Remove="ClientApp\src\Interfaces\Components\IMenu.ts" />
     <None Remove="ClientApp\src\Interfaces\Components\index.ts" />
     <None Remove="ClientApp\src\Interfaces\Components\Menu\ILayerMenuItem.ts" />
@@ -56,12 +61,12 @@
     <None Remove="ClientApp\src\Interfaces\Data\Routing\IRoutes.ts" />
     <None Remove="ClientApp\src\Interfaces\Data\Routing\IStep.ts" />
     <None Remove="ClientApp\src\Interfaces\Data\Routing\ITextValuePair.ts" />
+    <None Remove="ClientApp\src\Interfaces\Data\StatsDashboard\ILayerTotals.ts" />
+    <None Remove="ClientApp\src\Interfaces\Data\StatsDashboard\index.ts" />
     <None Remove="ClientApp\src\Interfaces\index.ts" />
     <None Remove="ClientApp\src\Interfaces\Layers\ILayer.ts" />
     <None Remove="ClientApp\src\Interfaces\Layers\index.ts" />
     <None Remove="ClientApp\src\Interfaces\Layers\IRoutingItem.ts" />
-    <None Remove="ClientApp\src\Interfaces\Screens\IMap.ts" />
-    <None Remove="ClientApp\src\Interfaces\Screens\index.ts" />
     <None Remove="ClientApp\src\Layers\Routing\DirectionsItem.tsx" />
     <None Remove="ClientApp\src\Layers\Routing\index.ts" />
     <None Remove="ClientApp\src\Layers\Routing\Routing.tsx" />
@@ -73,6 +78,9 @@
     <None Remove="ClientApp\src\Styles\Components\index.ts" />
     <None Remove="ClientApp\src\Utilities\DataTools\createDateString.ts" />
     <None Remove="ClientApp\src\Utilities\index.ts" />
+    <None Remove="ClientApp\src\Utilities\Logging\index.ts" />
+    <None Remove="ClientApp\src\Utilities\Logging\log.tsx" />
+    <None Remove="ClientApp\src\Utilities\Logging\logLayerUsage.tsx" />
     <None Remove="ClientApp\src\Utilities\reduxHooks.ts" />
     <None Remove="ClientApp\src\Utilities\Routing\determinZoom.ts" />
     <None Remove="ClientApp\src\Utilities\Routing\DirectionsMenu.tsx" />
@@ -86,13 +94,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="app.config">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </None>
+    <TypeScriptCompile Remove="ClientApp\src\Screens\StatsDashboard.tsx" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
+    <None Include="app.config">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">

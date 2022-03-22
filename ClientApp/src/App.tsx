@@ -1,29 +1,33 @@
-import { FunctionComponent, ReactElement, useState } from 'react';
-import { Layer } from 'maptalks';
+import { FunctionComponent, ReactElement, useState, useEffect } from 'react';
 
 import DWMap from './Screens/DWMap';
-import { LayerMenuItem } from './Components';
-import { ILayerMenuItem } from './Interfaces';
-import { Routing } from './Layers/Routing';
+import StatsDashboard from './Screens/StatsDashboard';
+import { NavBar } from './Components';
 import './Styles/App.css';
 
 const App: FunctionComponent = (): ReactElement => {
 
-    const routing = new Routing('route', '1');
+    const [activeScreen, setActiveScreen] = useState<ReactElement>();
+    const screens = [{
+        screen: <DWMap />,
+        screenName: 'Map'
+    }, {
+        screen: <StatsDashboard />,
+        screenName: 'Stats'
+     }];
 
-    const exampleLayers: ReactElement<ILayerMenuItem>[] = [];
-
-    for (let i = 0; i < 20; i++) {
-        exampleLayers.push(
-            <LayerMenuItem key={`${i}`} className={`${i}`} itemTitle={`I am ${i}`}/>
-         );
-    }
+    useEffect(() => {
+        setActiveScreen(screens[0].screen);
+    }, []);
 
     return (
         <div id='appContianer'>
-            <DWMap className='map' />
+            <NavBar className='nav' screens={screens} setScreen={setActiveScreen} />
+            {
+                activeScreen
+            }
         </div>
-    );
+    );  
 };
 
 export default App;
