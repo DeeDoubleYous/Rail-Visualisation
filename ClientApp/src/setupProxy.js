@@ -8,7 +8,8 @@ const context =  [
     "/weatherforecast",
     "/routing",
     "/logging",
-    "/logging/total"
+    "/logging/total",
+    "/timeliness"
 ];
 
 module.exports = function(app) {

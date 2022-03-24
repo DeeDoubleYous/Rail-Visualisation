@@ -3,6 +3,7 @@
 import { Menu, LayerMenuItem } from '../';
 import { ILayer } from '../../Interfaces';
 import { Routing } from '../../Layers/Routing';
+import { Timeliness } from '../../Layers/Timeliness';
 import { createDateString } from '../../Utilities';
 import '../../Styles/Components/DWSMapComponents/LayerMenu.css';
 
@@ -18,6 +19,11 @@ export const LayerMenu: FunctionComponent<ILayerMenu> = (props): ReactElement =>
             title: 'Routing',
             layer: Routing
         },
+        {
+            layerId: 2,
+            title: 'Timeliness',
+            layer: Timeliness
+        }
         ];
 
     return (
