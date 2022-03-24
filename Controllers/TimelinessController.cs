@@ -26,10 +26,6 @@ namespace RailVisualisation.Controllers
         [HttpGet]
         public async Task Get()
         {
-            var handler = new TokenHandling(client, this.railUri);
-
-            var token = await handler.GetToken();
-
 
         }
         
