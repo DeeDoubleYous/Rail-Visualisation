@@ -77,6 +77,7 @@
     <None Remove="ClientApp\src\Layers\Stations\Stations.tsx" />
     <None Remove="ClientApp\src\Layers\Timeliness\index.ts" />
     <None Remove="ClientApp\src\Layers\Timeliness\Timeliness.tsx" />
+    <None Remove="ClientApp\src\Layers\Timeliness\TimelinessComponent.tsx" />
     <None Remove="ClientApp\src\Screens\DWMap.tsx" />
     <None Remove="ClientApp\src\Components\DWMapComponents\LayerMenu.tsx" />
     <None Remove="ClientApp\src\Styles\Components\index.ts" />
@@ -95,6 +96,7 @@
     <None Remove="ClientApp\src\Utilities\DataTools\StyledString.tsx" />
     <None Remove="ClientApp\src\Utilities\Routing\routingSlice.ts" />
     <None Remove="ClientApp\src\Utilities\store.ts" />
+    <None Remove="ClientApp\src\Utilities\Timeliness\timelinessSlice.ts" />
   </ItemGroup>
 
   <ItemGroup>

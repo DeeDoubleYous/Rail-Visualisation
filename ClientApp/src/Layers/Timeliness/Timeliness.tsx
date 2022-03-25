@@ -58,13 +58,11 @@ export class Timeliness implements ILayer {
     private async gets(): Promise<void> {
         const searchTime = new Date('2022/03/25 19:02:00');
 
-        console.log(searchTime.getTime());
-
         const result = await fetch(`/timeliness?start=${encodeURIComponent('London Euston')}&end=${encodeURIComponent('Liverpool lime street')}&travelTime=${createDateString(searchTime)}`);
 
         const lateness = await result.json() as number;
 
-        console.log(text);
+        console.log(lateness);
     }
 
 }
