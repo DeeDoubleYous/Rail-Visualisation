@@ -4,6 +4,7 @@ import { Menu } from '../../Components';
 import { ILayer } from '../../Interfaces';
 
 import '../../Styles/Layers/Timeliness/Timeliness.css';
+import { createDateString } from '../../Utilities';
 
 export class Timeliness implements ILayer {
 
@@ -55,8 +56,15 @@ export class Timeliness implements ILayer {
     }
 
     private async gets(): Promise<void> {
-        console.log('I have been run');
-        await fetch('/timeliness');
+        const searchTime = new Date('2022/03/25 19:02:00');
+
+        console.log(searchTime.getTime());
+
+        const result = await fetch(`/timeliness?start=${encodeURIComponent('London Euston')}&end=${encodeURIComponent('Liverpool lime street')}&travelTime=${createDateString(searchTime)}`);
+
+        const lateness = await result.json() as number;
+
+        console.log(text);
     }
 
 }
