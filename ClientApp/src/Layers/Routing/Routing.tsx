@@ -6,7 +6,7 @@ import { RoutingComponent } from './RoutingComponent';
 import '../../Styles/Layers/Routing/Routing.css';
 import { IRouting } from '../../Interfaces/Data/Routing';
 import store from '../../Utilities/store';
-import { addLayer, removeLayer } from '../../Utilities';
+import { addLayer, removeLayer } from '../../Utilities/Routing';
 
 export class Routing implements ILayer {
 

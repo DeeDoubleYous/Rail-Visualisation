@@ -4,7 +4,8 @@ import { Menu } from '../../Components';
 import { VectorLayer, LineString, Coordinate } from 'maptalks';
 import { IRouting, IRoutingItem } from '../../Interfaces';
 import { RouteSearch } from '../../Components'
-import { createRouteLine, determinZoom, useAppDispatch, useAppSelector, updateLayer } from '../../Utilities';
+import { createRouteLine, determinZoom, useAppDispatch, useAppSelector } from '../../Utilities';
+import { updateLayer } from '../../Utilities/Routing';
 import { DirectionsList } from './DirectionsList';
 
 export interface IRoutingComponent{

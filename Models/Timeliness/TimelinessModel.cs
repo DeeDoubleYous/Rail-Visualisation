@@ -35,7 +35,7 @@ namespace RailVisualisation.Models.Timeliness
 
         public string GetServiceId(StationItem start, StationItem end, DateFilter travelTimeAsFilter, DateTime travelTime)
         {
-            var services = rttClient.GetDepartures(start.Code, end.Code, travelTimeAsFilter);
+            var services = rttClient.GetDepartures(start.Code, end.Code);
 
             var filteredService = services.Services.Where((serv) => serv.LocationDetail.Origin[0].WorkingTime.AsDateTime.Hour == travelTime.Hour && serv.LocationDetail.Origin[0].WorkingTime.AsDateTime.Minute == travelTime.Minute);
 
