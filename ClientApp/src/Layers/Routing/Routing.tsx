@@ -4,7 +4,6 @@ import { ILayer } from '../../Interfaces';
 import { RoutingComponent } from './RoutingComponent';
 
 import '../../Styles/Layers/Routing/Routing.css';
-import { IRouting } from '../../Interfaces/Data/Routing';
 import store from '../../Utilities/store';
 import { addLayer, removeLayer } from '../../Utilities/Routing';
 
@@ -42,7 +41,7 @@ export class Routing implements ILayer {
 
     drawComponents(): ReactElement {
         return (
-            <RoutingComponent id={this.id} className={this.className} layer={this.mapLayer} key={this.id} />
+            <RoutingComponent id={this.id} layer={this.mapLayer} key={this.id} />
         );
     }
 

@@ -1,11 +1,12 @@
 ﻿import { ReactElement } from 'react';
 import { VectorLayer } from 'maptalks';
-import { Menu } from '../../Components';
 import { ILayer } from '../../Interfaces';
 
 import '../../Styles/Layers/Timeliness/Timeliness.css';
 import { createDateString } from '../../Utilities';
 import { TimelinessComponent } from './TimelinessComponent';
+import store from '../../Utilities/store';
+import { addLayer, removeLayer } from '../../Utilities/Timeliness';
 
 export class Timeliness implements ILayer {
 
@@ -22,6 +23,13 @@ export class Timeliness implements ILayer {
         this.id = id;
 
         this.mapLayer = this.constructMapLayer();
+
+        if (id !== '1') {
+            store.dispatch(addLayer({
+                id: id,
+                route: undefined
+            }));
+        }
     }
 
     private constructMapLayer(): VectorLayer {
@@ -30,11 +38,12 @@ export class Timeliness implements ILayer {
 
     removeLayer() {
         this.mapLayer.remove();
+        store.dispatch(removeLayer(this.id));
     }
 
     drawComponents(): ReactElement {
         return (
-            <TimelinessComponent id='timeliness' />
+            <TimelinessComponent id='timeliness' layer={this.mapLayer} />
         );
     }
 

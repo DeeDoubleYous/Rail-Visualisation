@@ -1,16 +1,15 @@
 ﻿import { FunctionComponent, ReactElement, useEffect, useState } from 'react';
 
 import { Menu } from '../../Components';
-import { VectorLayer, LineString, Coordinate } from 'maptalks';
+import { VectorLayer } from 'maptalks';
 import { IRouting, IRoutingItem } from '../../Interfaces';
 import { RouteSearch } from '../../Components'
-import { createRouteLine, determinZoom, useAppDispatch, useAppSelector, centerMap, addToMap, removeFromMap } from '../../Utilities';
+import { createRouteLine, useAppDispatch, useAppSelector, centerMap, addToMap, removeFromMap } from '../../Utilities';
 import { updateLayer, fetchRoute } from '../../Utilities/Routing';
 import { DirectionsList } from './DirectionsList';
 
 export interface IRoutingComponent{
     id: string,
-    className: string,
     layer: VectorLayer
 }
 
@@ -81,7 +80,7 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
 
     return (
         <>
-            <Menu id='routingMenu'>
+            <Menu id='routingMenu' className='searchMenu'>
                 <RouteSearch id='routingSearch'
                     inputOneLabel='Start Location'
                     inputTwoLabel='End Location'

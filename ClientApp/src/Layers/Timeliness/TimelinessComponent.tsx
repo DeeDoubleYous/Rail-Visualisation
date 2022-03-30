@@ -1,11 +1,13 @@
-﻿import { FunctionComponent, ReactElement } from 'react';
+﻿import { FunctionComponent, ReactElement, useEffect, useState } from 'react';
 import { Menu, RouteSearch } from '../../Components';
-import { useAppDispatch, useAppSelector } from '../../Utilities';
-import { IRouting } from '../../Interfaces';
+import { addToMap, centerMap, createRouteLine, fetchRoute, removeFromMap, useAppDispatch, useAppSelector } from '../../Utilities';
+import { IRouting, IRoutingItem } from '../../Interfaces';
 import { updateLayer } from '../../Utilities/Timeliness';
+import { VectorLayer } from 'maptalks';
 
 interface ITimelinessComponent {
     id: string,
+    layer: VectorLayer
 }
 
 export const TimelinessComponent: FunctionComponent<ITimelinessComponent> = (props): ReactElement => {
@@ -13,6 +15,8 @@ export const TimelinessComponent: FunctionComponent<ITimelinessComponent> = (pro
     const dispatch = useAppDispatch();
 
     const route = useAppSelector(state => state.timelinessReducer.layers.filter(layer => layer.id === props.id)[0]?.route);
+    const [lines, setLines] = useState<IRoutingItem[]>([]),
+        [parentLines, setParentLines] = useState<IRouting[][]>([]);
 
     const setRoute = (newRoute: IRouting | undefined) => {
         dispatch(updateLayer({
@@ -21,17 +25,42 @@ export const TimelinessComponent: FunctionComponent<ITimelinessComponent> = (pro
         }));
     };
 
+    useEffect(() => {
+        if (route) {
+            const tempLines = createRouteLine(route.routes[0]);
 
+            setLines(tempLines);
+
+            lines.forEach(removeFromMap);
+
+            tempLines.forEach(line => addToMap(line, props.layer));
+
+            centerMap(props.layer.getMap(), route);
+
+        }
+    }, [route]);
+
+    const handleSearch = async (inputOne: string, inputTwo: string, dateOne: Date): Promise<void> => {
+        const fetchedData = await fetchRoute(inputOne, inputTwo, dateOne);
+
+        switch (fetchedData.status) {
+            case 'OK':
+                setRoute(fetchedData);
+                setParentLines([]);
+                break;
+            case 'ZERO_RESULTS':
+                alert('not found');
+                break;
+        }
+    }
 
     return (
-        <Menu id={props.id}>
-            <RouteSearch id='timelinessSearch'
+        <Menu id='timelinessMenu' className='searchMenu'>
+            <RouteSearch id='routingSearch'
                 depatureTimeLabel='Depature Time'
                 inputOneLabel='Start location'
                 inputTwoLabel='End location'
-                handleSearch={(inputOne: string, inputTwo: string, depature_time: Date) => {
-                    console.log(`one: ${inputOne} two: ${inputTwo} time:${depature_time}`);
-                } }
+                handleSearch={handleSearch}
             />
         </Menu>
     );
