@@ -29,21 +29,6 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
         }));
     };
 
-    //const addToMap = (line: IRoutingItem): void | LineString => line.subSteps ? line.subSteps.forEach(addToMap) : line.lineString?.addTo(props.layer);
-
-    //const removeFromMap = (line: IRoutingItem): void | LineString => line.subSteps ? line.subSteps.forEach(removeFromMap) : line.lineString?.remove();
-
-    //const centerMap = () => {
-    //    if (route) {
-    //        const map = props.layer.getMap();
-
-    //        const centerLng = (route.routes[0].legs[0].start_location.lng + route.routes[0].legs[0].end_location.lng) / 2;
-    //        const centerLat = (route.routes[0].legs[0].start_location.lat + route.routes[0].legs[0].end_location.lat) / 2;
-
-    //        map.setCenterAndZoom(new Coordinate([centerLng, centerLat]), determinZoom(route.routes[0].legs[0].start_location, route.routes[0].legs[0].end_location));
-    //    }
-    //}
-
     useEffect(() => {
         if (route) {
             const tempLines = createRouteLine(route.routes[0]);
