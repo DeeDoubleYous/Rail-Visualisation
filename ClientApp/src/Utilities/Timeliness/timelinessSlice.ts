@@ -10,8 +10,8 @@ interface ITimelinessStates {
     layers: ITimelinessLayer[]
 }
 
-const initialState = {
-    layers:[]
+const initialState: ITimelinessStates = {
+    layers: []
 }
 
 export const timelinessSlice = createSlice({

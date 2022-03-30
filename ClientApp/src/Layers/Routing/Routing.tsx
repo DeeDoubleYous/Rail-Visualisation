@@ -42,7 +42,7 @@ export class Routing implements ILayer {
 
     drawComponents(): ReactElement {
         return (
-            <RoutingComponent id={this.id} className={this.className} layer={this.mapLayer} fetchData={this.fetchData} key={this.id} />
+            <RoutingComponent id={this.id} className={this.className} layer={this.mapLayer} key={this.id} />
         );
     }
 
@@ -56,13 +56,6 @@ export class Routing implements ILayer {
 
     setSelected(selected: boolean): void {
         this.selected = selected;
-    }
-    
-    async fetchData(origin: string, destination: string, depature_time: Date): Promise<IRouting> {
-        const data = await fetch(`/routing?origin=${encodeURIComponent(origin)}&destination=${encodeURIComponent(destination)}&depature_time=${encodeURIComponent(depature_time.getTime())}`);
-        const text = await data.json() as IRouting;
-        
-        return text;
     }
 
     getLayerTitle(): string {

@@ -56,10 +56,7 @@ namespace RailVisualisation.Models.Timeliness
         {
             var travelTimeAsFilter = new DateFilter(travelTime.Year, travelTime.Month, travelTime.Day);
 
-            var startCode = await this.GetStationCode(start);
-            var endCode = await this.GetStationCode(end);
-
-            var serviceId = this.GetServiceId(startCode, endCode, travelTimeAsFilter, travelTime);
+            var serviceId = this.GetServiceId(await this.GetStationCode(start), await this.GetStationCode(end), travelTimeAsFilter, travelTime);
 
             var service = this.GetService(serviceId, travelTimeAsFilter);
 

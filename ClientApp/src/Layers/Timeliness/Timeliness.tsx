@@ -5,6 +5,7 @@ import { ILayer } from '../../Interfaces';
 
 import '../../Styles/Layers/Timeliness/Timeliness.css';
 import { createDateString } from '../../Utilities';
+import { TimelinessComponent } from './TimelinessComponent';
 
 export class Timeliness implements ILayer {
 
@@ -33,9 +34,7 @@ export class Timeliness implements ILayer {
 
     drawComponents(): ReactElement {
         return (
-            <Menu id='timeliness'>
-                <button onClick={this.gets}>Test</button>
-            </Menu>  
+            <TimelinessComponent id='timeliness' />
         );
     }
 

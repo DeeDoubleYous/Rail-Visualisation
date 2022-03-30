@@ -17,4 +17,5 @@ Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./LineCreation"), exports);
 __exportStar(require("./determinZoom"), exports);
 __exportStar(require("./routingSlice"), exports);
+__exportStar(require("./fetchRoute"), exports);
 //# sourceMappingURL=index.js.map

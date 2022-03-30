@@ -5,14 +5,13 @@ import { VectorLayer, LineString, Coordinate } from 'maptalks';
 import { IRouting, IRoutingItem } from '../../Interfaces';
 import { RouteSearch } from '../../Components'
 import { createRouteLine, determinZoom, useAppDispatch, useAppSelector } from '../../Utilities';
-import { updateLayer } from '../../Utilities/Routing';
+import { updateLayer, fetchRoute } from '../../Utilities/Routing';
 import { DirectionsList } from './DirectionsList';
 
 export interface IRoutingComponent{
     id: string,
     className: string,
-    layer: VectorLayer,
-    fetchData: (inputOne: string, inputTwo: string, depature_time: Date) => Promise<IRouting>
+    layer: VectorLayer
 }
 
 export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): ReactElement => {
@@ -70,7 +69,7 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
     };
 
     const handleSearch = async (inputOne: string, inputTwo: string, dateOne: Date): Promise<void> => {
-        const fetchedData = await props.fetchData(inputOne, inputTwo, dateOne);
+        const fetchedData = await fetchRoute(inputOne, inputTwo, dateOne);
 
         switch (fetchedData.status){
             case 'OK':

@@ -89,6 +89,7 @@
     <None Remove="ClientApp\src\Utilities\reduxHooks.ts" />
     <None Remove="ClientApp\src\Utilities\Routing\determinZoom.ts" />
     <None Remove="ClientApp\src\Utilities\Routing\DirectionsMenu.tsx" />
+    <None Remove="ClientApp\src\Utilities\Routing\fetchRoute.ts" />
     <None Remove="ClientApp\src\Utilities\Routing\index.ts" />
     <None Remove="ClientApp\src\Utilities\Routing\LineCreation.ts" />
     <None Remove="ClientApp\src\Utilities\DataTools\index.ts" />
