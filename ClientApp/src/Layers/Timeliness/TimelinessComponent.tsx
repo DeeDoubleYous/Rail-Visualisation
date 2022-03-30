@@ -2,7 +2,7 @@
 import { Menu, RouteSearch } from '../../Components';
 import { useAppDispatch, useAppSelector } from '../../Utilities';
 import { IRouting } from '../../Interfaces';
-import { upadateLayer } from '../../Utilities/Timeliness';
+import { updateLayer } from '../../Utilities/Timeliness';
 
 interface ITimelinessComponent {
     id: string,
