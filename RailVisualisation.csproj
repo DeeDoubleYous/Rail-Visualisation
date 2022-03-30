@@ -49,11 +49,6 @@
     <None Remove="ClientApp\src\Components\StatsDashboard\index.ts" />
     <None Remove="ClientApp\src\Components\StatsDashboard\LayerBreakDown.tsx" />
     <None Remove="ClientApp\src\Components\StatsDashboard\layerPieChart.tsx" />
-    <None Remove="ClientApp\src\Interfaces\Components\IMenu.ts" />
-    <None Remove="ClientApp\src\Interfaces\Components\index.ts" />
-    <None Remove="ClientApp\src\Interfaces\Components\Menu\ILayerMenuItem.ts" />
-    <None Remove="ClientApp\src\Interfaces\Components\Menu\IMenuItem.ts" />
-    <None Remove="ClientApp\src\Interfaces\Components\Menu\index.ts" />
     <None Remove="ClientApp\src\Interfaces\Data\index.ts" />
     <None Remove="ClientApp\src\Interfaces\Data\IRouting.ts" />
     <None Remove="ClientApp\src\Interfaces\Data\Routing\ILeg.ts" />

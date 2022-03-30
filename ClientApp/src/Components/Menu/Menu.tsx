@@ -2,7 +2,7 @@
 
 import '../../Styles/Components/Menu/Menu.css';
 
-export interface IMenu {
+interface IMenu {
     id: string,
     className?: string
 }
@@ -13,6 +13,6 @@ export const Menu: FunctionComponent<IMenu> = (props): ReactElement => {
             {
                 props.children
             }
-        </div>    
+        </div>
     )
 }
