@@ -18,8 +18,10 @@ export const TimelinessComponent: FunctionComponent<ITimelinessComponent> = (pro
         dispatch(updateLayer({
             id: props.id,
             route: newRoute
-        }))
-    }
+        }));
+    };
+
+
 
     return (
         <Menu id={props.id}>

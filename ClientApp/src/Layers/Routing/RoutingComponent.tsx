@@ -4,7 +4,7 @@ import { Menu } from '../../Components';
 import { VectorLayer, LineString, Coordinate } from 'maptalks';
 import { IRouting, IRoutingItem } from '../../Interfaces';
 import { RouteSearch } from '../../Components'
-import { createRouteLine, determinZoom, useAppDispatch, useAppSelector } from '../../Utilities';
+import { createRouteLine, determinZoom, useAppDispatch, useAppSelector, centerMap, addToMap, removeFromMap } from '../../Utilities';
 import { updateLayer, fetchRoute } from '../../Utilities/Routing';
 import { DirectionsList } from './DirectionsList';
 
@@ -29,20 +29,20 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
         }));
     };
 
-    const addToMap = (line: IRoutingItem): void | LineString => line.subSteps ? line.subSteps.forEach(addToMap) : line.lineString?.addTo(props.layer);
+    //const addToMap = (line: IRoutingItem): void | LineString => line.subSteps ? line.subSteps.forEach(addToMap) : line.lineString?.addTo(props.layer);
 
-    const removeFromMap = (line: IRoutingItem): void | LineString => line.subSteps ? line.subSteps.forEach(removeFromMap) : line.lineString?.remove();
+    //const removeFromMap = (line: IRoutingItem): void | LineString => line.subSteps ? line.subSteps.forEach(removeFromMap) : line.lineString?.remove();
 
-    const centerMap = () => {
-        if (route) {
-            const map = props.layer.getMap();
+    //const centerMap = () => {
+    //    if (route) {
+    //        const map = props.layer.getMap();
 
-            const centerLng = (route.routes[0].legs[0].start_location.lng + route.routes[0].legs[0].end_location.lng) / 2;
-            const centerLat = (route.routes[0].legs[0].start_location.lat + route.routes[0].legs[0].end_location.lat) / 2;
+    //        const centerLng = (route.routes[0].legs[0].start_location.lng + route.routes[0].legs[0].end_location.lng) / 2;
+    //        const centerLat = (route.routes[0].legs[0].start_location.lat + route.routes[0].legs[0].end_location.lat) / 2;
 
-            map.setCenterAndZoom(new Coordinate([centerLng, centerLat]), determinZoom(route.routes[0].legs[0].start_location, route.routes[0].legs[0].end_location));
-        }
-    }
+    //        map.setCenterAndZoom(new Coordinate([centerLng, centerLat]), determinZoom(route.routes[0].legs[0].start_location, route.routes[0].legs[0].end_location));
+    //    }
+    //}
 
     useEffect(() => {
         if (route) {
@@ -52,9 +52,10 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
 
             lines.forEach(removeFromMap);
 
-            tempLines.forEach(addToMap);
+            tempLines.forEach(line => addToMap(line, props.layer));
 
-            centerMap();
+            centerMap(props.layer.getMap(), route);
+            
         }
     }, [route]);
 

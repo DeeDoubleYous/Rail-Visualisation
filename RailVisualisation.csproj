@@ -86,6 +86,8 @@
     <None Remove="ClientApp\src\Utilities\Logging\index.ts" />
     <None Remove="ClientApp\src\Utilities\Logging\log.tsx" />
     <None Remove="ClientApp\src\Utilities\Logging\logLayerUsage.tsx" />
+    <None Remove="ClientApp\src\Utilities\Map\index.ts" />
+    <None Remove="ClientApp\src\Utilities\Map\mapFunctions.ts" />
     <None Remove="ClientApp\src\Utilities\reduxHooks.ts" />
     <None Remove="ClientApp\src\Utilities\Routing\determinZoom.ts" />
     <None Remove="ClientApp\src\Utilities\Routing\DirectionsMenu.tsx" />
