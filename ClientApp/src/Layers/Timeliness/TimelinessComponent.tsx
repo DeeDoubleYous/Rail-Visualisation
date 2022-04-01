@@ -4,6 +4,7 @@ import { addToMap, centerMap, createRouteLine, fetchRoute, removeFromMap, useApp
 import { IRouting, IRoutingItem } from '../../Interfaces';
 import { updateLayer } from '../../Utilities/Timeliness';
 import { VectorLayer } from 'maptalks';
+import { fetchLateness } from '../../Utilities/Timeliness/fetchLateness';
 
 interface ITimelinessComponent {
     id: string,
