@@ -4,7 +4,7 @@ import { determinZoom } from '../Routing';
 
 export const addToMap = (line: RoutingItems, layer: Layer): void | LineString => line.subSteps ? line.subSteps.forEach(async (step) => addToMap(await step, layer)) : line.lineString?.addTo(layer);
 
-export const removeFromMap = (line: RoutingItems): void | LineString => line.subSteps ? line.subSteps.forEach(async (subStep) => removeFromMap) : line.lineString?.remove();
+export const removeFromMap = (line: RoutingItems): void | LineString => line.subSteps ? line.subSteps.forEach(async (subStep) => removeFromMap(await subStep)) : line.lineString?.remove();
 
 export const centerMap = (map: Map, route: IRouting): void => {
     const centerLng = (route.routes[0].legs[0].start_location.lng + route.routes[0].legs[0].end_location.lng) / 2;
