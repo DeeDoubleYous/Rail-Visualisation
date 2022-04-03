@@ -3,18 +3,14 @@
 import { fetchLateness, getLatenessColour } from './';
 import { createLine, decodePolyLine } from '../';
 import { IStep, ILeg, IRoutes } from '../../Interfaces';
+import { IAsyncRoutingItem } from '../../Interfaces/Layers/IAsyncRoutingItem';
 
-interface IAsyncRoutingItem {
-    step: IStep,
-    lineString?: LineString,
-    subSteps?: Promise<IAsyncRoutingItem>[]
-};
 
 const createStepLine = async (step: IStep): Promise<IAsyncRoutingItem> => {
     let colour = '#235689';
 
     if (step.travel_mode === 'TRANSIT' && step.transit_details) {
-        colour = getLatenessColour(await fetchLateness(step, step.transit_details.departure_time.text));
+        colour = getLatenessColour(await fetchLateness(step));
     }
 
     return {

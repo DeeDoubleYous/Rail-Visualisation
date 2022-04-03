@@ -1,10 +1,10 @@
 ﻿import { FunctionComponent, ReactElement, useEffect, useState } from 'react';
 import { Menu, RouteSearch } from '../../Components';
 import { addToMap, centerMap, createRouteLine, fetchRoute, removeFromMap, useAppDispatch, useAppSelector } from '../../Utilities';
-import { IRouting, IRoutingItem } from '../../Interfaces';
+import { IRouting, IRoutingItem, IAsyncRoutingItem } from '../../Interfaces';
 import { updateLayer } from '../../Utilities/Timeliness';
 import { VectorLayer } from 'maptalks';
-import { fetchLateness } from '../../Utilities/Timeliness/fetchLateness';
+import { createTimelinessLine } from '../../Utilities/Timeliness/timelinessCreateLine';
 
 interface ITimelinessComponent {
     id: string,
@@ -16,7 +16,7 @@ export const TimelinessComponent: FunctionComponent<ITimelinessComponent> = (pro
     const dispatch = useAppDispatch();
 
     const route = useAppSelector(state => state.timelinessReducer.layers.filter(layer => layer.id === props.id)[0]?.route);
-    const [lines, setLines] = useState<IRoutingItem[]>([]),
+    const [lines, setLines] = useState<IAsyncRoutingItem[]>([]),
         [parentLines, setParentLines] = useState<IRouting[][]>([]);
 
     const setRoute = (newRoute: IRouting | undefined) => {
@@ -28,18 +28,16 @@ export const TimelinessComponent: FunctionComponent<ITimelinessComponent> = (pro
 
     useEffect(() => {
         if (route) {
-            const tempLines = createRouteLine(route.routes[0]);
-
-            setLines(tempLines);
-
             lines.forEach(removeFromMap);
-
-            tempLines.forEach(line => addToMap(line, props.layer));
-
-            centerMap(props.layer.getMap(), route);
-
+            createTimelinessLine(route.routes[0]).then(async (lines) =>{
+                setLines(lines);
+            });
         }
     }, [route]);
+
+    useEffect(() => {
+
+    }, [lines]);
 
     const handleSearch = async (inputOne: string, inputTwo: string, dateOne: Date): Promise<void> => {
         const fetchedData = await fetchRoute(inputOne, inputTwo, dateOne);
