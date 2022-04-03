@@ -1,5 +1,5 @@
 ﻿import { Coordinate, Map, Layer, LineString } from 'maptalks';
-import { IRoutingItem, IRouting, RoutingItems } from '../../Interfaces';
+import { IRouting, RoutingItems } from '../../Interfaces';
 import { determinZoom } from '../Routing';
 
 export const addToMap = (line: RoutingItems, layer: Layer): void | LineString => line.subSteps ? line.subSteps.forEach(async (step) => addToMap(await step, layer)) : line.lineString?.addTo(layer);
