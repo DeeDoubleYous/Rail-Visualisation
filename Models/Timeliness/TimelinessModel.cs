@@ -20,12 +20,12 @@ namespace RailVisualisation.Models.Timeliness
             this.statsKey = $"{System.Configuration.ConfigurationManager.AppSettings["statKey"]}";
         }
 
-        public async Task<StationItem> GetStationCode(string stationName)
+        public async Task<StationItem> GetStationCode(string stationName, string stationPostcode)
         {
             try
             {
-                var response = await client.GetFromJsonAsync<StationItem[]>($"{this.statsUri}?key={statsKey}&station={stationName}");
-                return response[0];
+                var response = await client.GetFromJsonAsync<StationItem>($"{this.statsUri}?key={statsKey}&stationName={stationName}&stationPostcode={stationPostcode}");
+                return response;
             }catch(Exception e)
             {
                 Console.WriteLine(e.Message);
@@ -52,21 +52,34 @@ namespace RailVisualisation.Models.Timeliness
             return this.rttClient.GetService(serviceCode, travelTime);
         }
 
-        public async Task<int> GetServiceLateness(string start, string end, DateTime travelTime)
+        public async Task<int> GetServiceLateness(string start, string startPostcode, string end, string endPostcode, DateTime travelTime)
         {
             var travelTimeAsFilter = new DateFilter(travelTime.Year, travelTime.Month, travelTime.Day);
 
-            var serviceId = this.GetServiceId(await this.GetStationCode(start), await this.GetStationCode(end), travelTimeAsFilter, travelTime);
+            var serviceId = this.GetServiceId(await this.GetStationCode(start, startPostcode), await this.GetStationCode(end, endPostcode), travelTimeAsFilter, travelTime);
 
             var service = this.GetService(serviceId, travelTimeAsFilter);
 
             if(service.Locations.FirstOrDefault() != null)
             {
                 var serviceFirst = service.Locations.First();
+                int lateness = 0;
 
-                return serviceFirst.RealtimePassLateness;
+                if(serviceFirst.RealtimePublicTimetableDepartureLateness != null)
+                {
+                    lateness = (int)serviceFirst.RealtimePublicTimetableDepartureLateness;
+                }
+
+                Console.WriteLine(lateness);
+                if (lateness != null)
+                {
+                    return lateness;
+                }
+                else
+                {
+                    return 0;
+                }
             }
-
             return -1;
         }
     }

@@ -1,10 +1,11 @@
 ﻿import { FunctionComponent, ReactElement, useEffect, useState } from 'react';
 import { Menu, RouteSearch } from '../../Components';
 import { addToMap, centerMap, createRouteLine, fetchRoute, removeFromMap, useAppDispatch, useAppSelector } from '../../Utilities';
-import { IRouting, IRoutingItem, IAsyncRoutingItem } from '../../Interfaces';
-import { updateLayer } from '../../Utilities/Timeliness';
+import { IRouting, IRoutingItem, IAsyncRoutingItem, IStep } from '../../Interfaces';
+import { fetchLateness, updateLayer } from '../../Utilities/Timeliness';
 import { VectorLayer } from 'maptalks';
 import { createTimelinessLine } from '../../Utilities/Timeliness/timelinessCreateLine';
+import { DirectionsList } from '../Routing/DirectionsList';
 
 interface ITimelinessComponent {
     id: string,
@@ -36,7 +37,10 @@ export const TimelinessComponent: FunctionComponent<ITimelinessComponent> = (pro
     }, [route]);
 
     useEffect(() => {
-
+       if(lines && route){
+          lines.forEach(line => addToMap(line, props.layer));
+          centerMap(props.layer.getMap(), route);
+       }
     }, [lines]);
 
     const handleSearch = async (inputOne: string, inputTwo: string, dateOne: Date): Promise<void> => {
@@ -51,16 +55,18 @@ export const TimelinessComponent: FunctionComponent<ITimelinessComponent> = (pro
                 alert('not found');
                 break;
         }
-    }
+      }
+
+      lines.forEach(line => line.subSteps)
 
     return (
-        <Menu id='timelinessMenu' className='searchMenu'>
-            <RouteSearch id='routingSearch'
-                depatureTimeLabel='Depature Time'
-                inputOneLabel='Start location'
-                inputTwoLabel='End location'
-                handleSearch={handleSearch}
-            />
-        </Menu>
+      <Menu id='timelinessMenu' className='searchMenu'>
+         <RouteSearch id='routingSearch'
+               depatureTimeLabel='Depature Time'
+               inputOneLabel='Start location'
+               inputTwoLabel='End location'
+               handleSearch={handleSearch}
+         />
+      </Menu>
     );
 };

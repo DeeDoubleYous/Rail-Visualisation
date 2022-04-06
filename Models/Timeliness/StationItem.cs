@@ -7,15 +7,21 @@
             get; set;
         }
 
-        public string Station
+        public string Name
         {
             get; set;
         }
 
-        public StationItem(string code, string station)
+        public string Postcode
+        {
+            get; set;
+        }
+
+        public StationItem(string code, string name, string postcode)
         {
             this.Code = code;
-            this.Station = station;
+            this.Name = name;
+            this.Postcode = postcode;
         }
     }
 }

@@ -6,11 +6,11 @@ import { IStep, ILeg, IRoutes } from '../../Interfaces';
 import { IAsyncRoutingItem } from '../../Interfaces/Layers/IAsyncRoutingItem';
 
 
-const createStepLine = async (step: IStep): Promise<IAsyncRoutingItem> => {
+const createStepLine = async (step: IStep, lateness: number): Promise<IAsyncRoutingItem> => {
     let colour = '#235689';
 
-    if (step.travel_mode === 'TRANSIT' && step.transit_details) {
-        colour = getLatenessColour(await fetchLateness(step));
+    if (step.travel_mode === 'TRANSIT' && step.transit_details && step.transit_details.line.vehicle.type === 'HEAVY_RAIL') {
+        colour = getLatenessColour(lateness);
     }
 
     return {
@@ -19,10 +19,10 @@ const createStepLine = async (step: IStep): Promise<IAsyncRoutingItem> => {
     };
 }
 
-const createSepLineList = async (step: IStep): Promise<IAsyncRoutingItem[]> => step.steps ? await [{ step: step, subSteps: await step.steps.map((subStep) => createStepLine(subStep)) }] : [await createStepLine(step)];
-
 const createLineFromLeg = async (leg: ILeg) => {
-    return await (await Promise.all(leg.steps.map(async (step) => await createSepLineList(step)))).flat();
+    const lateness = await fetchLateness(leg);
+
+    return await (await Promise.all(leg.steps.map(async (step) => await createStepLine(step, lateness)))).flat();
 }
 
 export const createTimelinessLine = async (route: IRoutes) => (await Promise.all(route.legs.map(await createLineFromLeg))).flat();

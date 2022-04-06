@@ -17,28 +17,21 @@ namespace RailVisualisation.Controllers
         readonly HttpClient client;
         readonly IRealTimeTrainsClient rttClient;
 
-        readonly string railUri;
-        readonly string railUser;
-        readonly string railPass;
-
         public TimelinessController(HttpClient client, IRealTimeTrainsClient rttClient)
         {
             this.client = client;
             this.rttClient = rttClient;
-
-            this.railUri = $"{System.Configuration.ConfigurationManager.ConnectionStrings["nationalRail"]}";
-            this.railUser = $"{System.Configuration.ConfigurationManager.AppSettings["railUser"]}";
-            this.railPass = $"{System.Configuration.ConfigurationManager.AppSettings["railPass"]}";
         }
 
 
         [HttpGet]
-        public async Task<int> Get(string start, string end, DateTime travelTime)
+        public async Task<int> Get(string start, string startPostcode, string end, string endPostcode, DateTime travelTime)
         {
             try
-            {
+            { 
+
                 var lookUp = new TimelinessModel(client, rttClient);
-                var lateness = await lookUp.GetServiceLateness(start, end, travelTime);
+                var lateness = await lookUp.GetServiceLateness(start, startPostcode, end, endPostcode, travelTime);
 
                 return lateness;
 
