@@ -6,4 +6,3 @@ var stripHTML = function (text) {
     return text.replaceAll(regex, ' ');
 };
 exports.stripHTML = stripHTML;
-//# sourceMappingURL=stripHTML.js.map

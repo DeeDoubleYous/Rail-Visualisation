@@ -12,4 +12,4 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./ILayer"), exports);
 __exportStar(require("./IRoutingItem"), exports);
-//# sourceMappingURL=index.js.map
+__exportStar(require("./IAsyncRoutingItem"), exports);

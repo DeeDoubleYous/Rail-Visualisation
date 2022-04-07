@@ -1,17 +1,16 @@
 ﻿import { FunctionComponent, ReactElement, useEffect, useState } from 'react';
 
 import { Menu } from '../../Components';
-import { VectorLayer, LineString, Coordinate } from 'maptalks';
+import { VectorLayer } from 'maptalks';
 import { IRouting, IRoutingItem } from '../../Interfaces';
-import { createRouteLine, determinZoom, useAppDispatch, useAppSelector, updateLayer } from '../../Utilities';
+import { RouteSearch } from '../../Components'
+import { createRouteLine, useAppDispatch, useAppSelector, centerMap, addToMap, removeFromMap } from '../../Utilities';
+import { updateLayer, fetchRoute } from '../../Utilities/Routing';
 import { DirectionsList } from './DirectionsList';
-import { RouteSearch } from './RouteSearch';
 
 export interface IRoutingComponent{
     id: string,
-    className: string,
-    layer: VectorLayer,
-    fetchData: (inputOne: string, inputTwo: string, depature_time: Date) => Promise<IRouting>
+    layer: VectorLayer
 }
 
 export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): ReactElement => {
@@ -29,21 +28,6 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
         }));
     };
 
-    const addToMap = (line: IRoutingItem): void | LineString => line.subSteps ? line.subSteps.forEach(addToMap) : line.lineString?.addTo(props.layer);
-
-    const removeFromMap = (line: IRoutingItem): void | LineString => line.subSteps ? line.subSteps.forEach(removeFromMap) : line.lineString?.remove();
-
-    const centerMap = () => {
-        if (route) {
-            const map = props.layer.getMap();
-
-            const centerLng = (route.routes[0].legs[0].start_location.lng + route.routes[0].legs[0].end_location.lng) / 2;
-            const centerLat = (route.routes[0].legs[0].start_location.lat + route.routes[0].legs[0].end_location.lat) / 2;
-
-            map.setCenterAndZoom(new Coordinate([centerLng, centerLat]), determinZoom(route.routes[0].legs[0].start_location, route.routes[0].legs[0].end_location));
-        }
-    }
-
     useEffect(() => {
         if (route) {
             const tempLines = createRouteLine(route.routes[0]);
@@ -52,9 +36,10 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
 
             lines.forEach(removeFromMap);
 
-            tempLines.forEach(addToMap);
+            tempLines.forEach(line => addToMap(line, props.layer));
 
-            centerMap();
+            centerMap(props.layer.getMap(), route);
+            
         }
     }, [route]);
 
@@ -69,7 +54,7 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
     };
 
     const handleSearch = async (inputOne: string, inputTwo: string, dateOne: Date): Promise<void> => {
-        const fetchedData = await props.fetchData(inputOne, inputTwo, dateOne);
+        const fetchedData = await fetchRoute(inputOne, inputTwo, dateOne);
 
         switch (fetchedData.status){
             case 'OK':
@@ -95,7 +80,7 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
 
     return (
         <>
-            <Menu id='routingMenu'>
+            <Menu id='routingMenu' className='searchMenu'>
                 <RouteSearch id='routingSearch'
                     inputOneLabel='Start Location'
                     inputTwoLabel='End Location'

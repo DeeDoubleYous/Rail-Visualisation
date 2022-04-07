@@ -15,6 +15,7 @@
 
 .DWMap{
     grid-area: screen;
+    height: 100vh;
 }
 
 .Stats{

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.createRouteLine = void 0;
+exports.createRouteLine = exports.createLine = exports.decodePolyLine = void 0;
 var maptalks_1 = require("maptalks");
 var polyline_codec_1 = require("@googlemaps/polyline-codec");
 var decodePolyLine = function (line) {
@@ -10,6 +10,7 @@ var decodePolyLine = function (line) {
         return [lng, lat];
     });
 };
+exports.decodePolyLine = decodePolyLine;
 /**
  * *
  * A function to use to create line for the map. Unconcerned with the adding to the map only creates the line object.
@@ -24,14 +25,15 @@ var createLine = function (points, lineColour, lineWidth) { return new maptalks_
         lineWidth: lineWidth
     }
 }); };
+exports.createLine = createLine;
 var createStepLine = function (step) {
     var colour = '#235689';
-    if (step.travel_mode == 'TRANSIT' && step.transit_details) {
+    if (step.travel_mode === 'TRANSIT' && step.transit_details) {
         colour = step.transit_details.line.color === '#000000' ? '#FFF' : step.transit_details.line.color;
     }
     return {
         step: step,
-        lineString: createLine(decodePolyLine(step.polyline), colour, 3)
+        lineString: (0, exports.createLine)((0, exports.decodePolyLine)(step.polyline), colour, 3)
     };
 };
 var createStepLineList = function (step) { return step.steps ? [{ step: step, subSteps: step.steps.map(createStepLine) }] : [createStepLine(step)]; };

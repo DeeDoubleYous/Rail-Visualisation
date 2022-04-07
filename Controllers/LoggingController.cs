@@ -21,7 +21,7 @@ namespace RailVisualisation.Controllers
             this.client = client;
 
             var statsKey = System.Configuration.ConfigurationManager.AppSettings["statKey"];
-            var statsUrl = System.Configuration.ConfigurationManager.ConnectionStrings["loggingAPI"].ConnectionString;
+            var statsUrl = $"{System.Configuration.ConfigurationManager.ConnectionStrings["loggingAPI"].ConnectionString}/log";
             if (statsKey != null && statsUrl != null)
             {
                 this.statsKey = statsKey;

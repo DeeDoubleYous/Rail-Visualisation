@@ -5,8 +5,3 @@
     height: 40%;
     width: 20%;
 }
-
-#routingSearch{
-    grid-area: search;
-    min-height: 6rem;
-}
