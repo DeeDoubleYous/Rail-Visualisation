@@ -30,7 +30,9 @@ export const LayerMenu: FunctionComponent<ILayerMenu> = (props): ReactElement =>
         <Menu id='layerMenu'>
             {
                 layers.map(layer => <LayerMenuItem key={layer.title} className={layer.title} itemTitle={layer.title} primaryAction={() => {
-                    const newLayer = new layer.layer(layer.title, createDateString(new Date(Date.now())));
+                    const date = new Date(Date.now());
+                    date.setMonth(date.getMonth() + 1);
+                    const newLayer = new layer.layer(layer.title, createDateString(date));
                     props.addLayer(newLayer, layer.layerId);
                 }}/>)
             }

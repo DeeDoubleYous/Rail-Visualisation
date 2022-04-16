@@ -1,7 +1,7 @@
 import { ILeg } from "../../Interfaces";
 import { createDateString } from "../DataTools";
 
-const stripStation = (station: string) => station.split('Station')[0].trim();
+export const stripStation = (station: string) => station.split('Station')[0].trim();
 
 export const getPostCode = (address: string): string => {
     let postCode = '';
@@ -14,26 +14,27 @@ export const getPostCode = (address: string): string => {
     return postCode;
 };
 
-const genTime = (time: string) => {
+export const genTime = (time: string) => {
     const [hour, min] = time.split(':');
 
-    if (min.match('am')) {
-        return [parseInt(hour), parseInt(min.substring(0, 2))];
+    if (min.match('pm')) {
+        return [24 - parseInt(hour), parseInt(min.substring(0, 2))];
     }
 
-    return [24 - parseInt(hour), parseInt(min.substring(0, 2))];
+    return [parseInt(hour), parseInt(min.substring(0, 2))];
 
-}
+};
 
 export const fetchLateness = async (leg: ILeg) => {
     if(!leg.steps[1].transit_details){
-        console.log('bee');
         return -1;
     }
 
     const [hour, mins] = genTime(leg.steps[1].transit_details?.departure_time.text);
     
     const depatureDate = new Date(Date.now());
+
+    depatureDate.setMonth(depatureDate.getMonth() + 1);
 
     depatureDate.setHours(hour);
     depatureDate.setMinutes(mins);

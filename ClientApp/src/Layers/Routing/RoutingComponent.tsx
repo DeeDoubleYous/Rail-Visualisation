@@ -53,7 +53,7 @@ export const RoutingComponent: FunctionComponent<IRoutingComponent> = (props): R
         setParentLines(parentLines.slice(1));
     };
 
-    const handleSearch = async (inputOne: string, inputTwo: string, dateOne: Date): Promise<void> => {
+    const handleSearch = async (inputOne: string, inputTwo: string, dateOne: string): Promise<void> => {
         const fetchedData = await fetchRoute(inputOne, inputTwo, dateOne);
 
         switch (fetchedData.status){

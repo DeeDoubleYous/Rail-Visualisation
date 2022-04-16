@@ -1,4 +1,4 @@
 ﻿export const stripHTML = (text: string) => {
     const regex = /[<][^>]+[>]/ig;
-    return text.replaceAll(regex, ' ');
+    return text.replaceAll(regex, '');
 };

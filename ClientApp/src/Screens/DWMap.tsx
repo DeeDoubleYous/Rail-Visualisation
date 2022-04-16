@@ -43,6 +43,7 @@ const DWMap: FunctionComponent = (): ReactElement => {
 
     const addLayer = async (layer: ILayer, layerId: number) => {
         const timeStamp = new Date(Date.now());
+        timeStamp.setMonth(timeStamp.getMonth()+1);
 
         logLayerUsage(layerId, timeStamp);
 
