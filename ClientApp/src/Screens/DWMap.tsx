@@ -21,16 +21,12 @@ const DWMap: FunctionComponent = (): ReactElement => {
                 new Maptalks.TileLayer('Dark', {
                     renderer: 'gl',
                     urlTemplate: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
-                    subdomains: ['a', 'b', 'c', 'd'],
-                    attribution: '&copy; <a href="http://www.osm.org/copyright">OSM</a> contributors, ' +
-                        '&copy; <a href="https://carto.com/attributions">CARTO</a>'
+                    subdomains: ['a', 'b', 'c', 'd']
                 }),
                 new Maptalks.TileLayer('Light', {
                     renderer: 'gl',
                     urlTemplate: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
-                    subdomains: ['a', 'b', 'c', 'd'],
-                    attribution: '&copy; <a href="http://www.osm.org/copyright">OSM</a> contributors, ' +
-                        '&copy; <a href="https://carto.com/attributions">CARTO</a>'
+                    subdomains: ['a', 'b', 'c', 'd']
                 }),
                 
             ]),
@@ -52,7 +48,14 @@ const DWMap: FunctionComponent = (): ReactElement => {
             'zoomLevel': true
         });
 
+        const attribution = new Maptalks.control.Attribution({
+            content: '&copy; <a href="http://www.osm.org/copyright">OSM</a> contributors, ' +
+                        '&copy; <a href="https://carto.com/attributions">CARTO</a>',
+            position: {'left': '75', 'bottom': '0'}
+        });
+
         localMap.addControl(zoomControl);
+        localMap.addControl(attribution);
 
         return () => {
             map?.remove();
