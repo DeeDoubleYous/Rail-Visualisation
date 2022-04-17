@@ -70,7 +70,6 @@ namespace RailVisualisation.Models.Timeliness
                     lateness = (int)serviceFirst.RealtimePublicTimetableDepartureLateness;
                 }
 
-                Console.WriteLine(lateness);
                 if (lateness != null)
                 {
                     return lateness;

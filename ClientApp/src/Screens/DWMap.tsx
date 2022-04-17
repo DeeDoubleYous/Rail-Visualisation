@@ -15,20 +15,44 @@ const DWMap: FunctionComponent = (): ReactElement => {
     useEffect(() => {
         const localMap = new Maptalks.Map('map', {
             center: [-0.119460, 50.844419],
-            zoom: 13,
+            zoom: 6,
             minZoom: 6,
-            baseLayer: new Maptalks.TileLayer('base', {
-                renderer: 'gl',
-                urlTemplate: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
-                subdomains: ['a', 'b', 'c', 'd'],
-                attribution: '&copy; <a href="http://www.osm.org/copyright">OSM</a> contributors, ' +
-                    '&copy; <a href="https://carto.com/attributions">CARTO</a>'
-            }),
+            baseLayer: new Maptalks.GroupTileLayer('Base TileLayer', [
+                new Maptalks.TileLayer('Dark', {
+                    renderer: 'gl',
+                    urlTemplate: 'https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}.png',
+                    subdomains: ['a', 'b', 'c', 'd'],
+                    attribution: '&copy; <a href="http://www.osm.org/copyright">OSM</a> contributors, ' +
+                        '&copy; <a href="https://carto.com/attributions">CARTO</a>'
+                }),
+                new Maptalks.TileLayer('Light', {
+                    renderer: 'gl',
+                    urlTemplate: 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png',
+                    subdomains: ['a', 'b', 'c', 'd'],
+                    attribution: '&copy; <a href="http://www.osm.org/copyright">OSM</a> contributors, ' +
+                        '&copy; <a href="https://carto.com/attributions">CARTO</a>'
+                }),
+                
+            ]),
+            layerSwitcherControl:{
+                'position': {'bottom': '15', 'left': '25'},
+                'baseTitle': 'Map Colours',
+                'container-Class': 'maptalks-layer-switcher',
+                'excludeLayers': 'v'
+            },
             layers: [
                 new Maptalks.VectorLayer('v')
             ]
         });
         setMap(localMap);
+
+        const zoomControl = new Maptalks.control.Zoom({
+            'position': { 'bottom': '20', 'left': '1'},
+            'slider': true,
+            'zoomLevel': true
+        });
+
+        localMap.addControl(zoomControl);
 
         return () => {
             map?.remove();
