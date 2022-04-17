@@ -9,6 +9,7 @@ import '../Styles/Screens/DWMap.css';
 
 const DWMap: FunctionComponent = (): ReactElement => {
     const [map, setMap] = useState<Maptalks.Map>();
+    const [layerSwitcher, setLayerSwitcher] = useState<Maptalks.control.LayerSwitcher>();
     const [selectedLayer, setSelectedLayer] = useState<ILayer | null>();
     const [activeLayers, setActiveLayers] = useState<ILayer[]>([]);
 
@@ -34,7 +35,9 @@ const DWMap: FunctionComponent = (): ReactElement => {
                 'position': {'bottom': '15', 'left': '25'},
                 'baseTitle': 'Map Colours',
                 'container-Class': 'maptalks-layer-switcher',
-                'excludeLayers': 'v'
+                'excludeLayers': [
+                    'v'
+                ]
             },
             layers: [
                 new Maptalks.VectorLayer('v')
@@ -54,8 +57,20 @@ const DWMap: FunctionComponent = (): ReactElement => {
             position: {'left': '75', 'bottom': '0'}
         });
 
+        const localLayerSwitcher = new Maptalks.control.LayerSwitcher({
+            'position': {'bottom': '15', 'left': '25'},
+            'baseTitle': 'Map Colours',
+            'excludeLayers': [
+                'v'
+            ]
+        });
+
+        setLayerSwitcher(localLayerSwitcher);
+
         localMap.addControl(zoomControl);
         localMap.addControl(attribution);
+        localMap.addControl(localLayerSwitcher);
+
 
         return () => {
             map?.remove();
@@ -73,6 +88,8 @@ const DWMap: FunctionComponent = (): ReactElement => {
         timeStamp.setMonth(timeStamp.getMonth()+1);
 
         logLayerUsage(layerId, timeStamp);
+
+        layerSwitcher?.options.excludeLayers.push(layer.getMapLayer().getId());
 
         changeSelectedLayer(layer);
         setActiveLayers(activeLayers.concat(layer));
