@@ -1,4 +1,4 @@
-﻿import { ClassicFactory, ClassType, FunctionComponent, ReactElement } from 'react';
+﻿import { FunctionComponent, ReactElement } from 'react';
 
 import { Menu, LayerMenuItem } from '../';
 import { ILayer } from '../../Interfaces';

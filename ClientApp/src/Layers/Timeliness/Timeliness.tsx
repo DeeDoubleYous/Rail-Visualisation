@@ -3,7 +3,6 @@ import { VectorLayer } from 'maptalks';
 import { ILayer } from '../../Interfaces';
 
 import '../../Styles/Layers/Timeliness/Timeliness.css';
-import { createDateString } from '../../Utilities';
 import { TimelinessComponent } from './TimelinessComponent';
 import store from '../../Utilities/store';
 import { addLayer, removeLayer } from '../../Utilities/Timeliness';
@@ -62,15 +61,4 @@ export class Timeliness implements ILayer {
     getLayerTitle(): string {
         return this.layerTitle;
     }
-
-    private async gets(): Promise<void> {
-        const searchTime = new Date('2022/03/25 19:02:00');
-
-        const result = await fetch(`/timeliness?start=${encodeURIComponent('London Euston')}&end=${encodeURIComponent('Liverpool lime street')}&travelTime=${createDateString(searchTime)}`);
-
-        const lateness = await result.json() as number;
-
-        console.log(lateness);
-    }
-
 }
