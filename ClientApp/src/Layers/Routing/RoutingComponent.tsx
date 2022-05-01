@@ -1,7 +1,7 @@
 ﻿import { FunctionComponent, ReactElement, useEffect, useState } from 'react';
+import { VectorLayer } from 'maptalks';
 
 import { Menu } from '../../Components';
-import { VectorLayer } from 'maptalks';
 import { IRouting, IRoutingItem } from '../../Interfaces';
 import { RouteSearch } from '../../Components'
 import { createRouteLine, useAppDispatch, useAppSelector, centerMap, addToMap, removeFromMap } from '../../Utilities';

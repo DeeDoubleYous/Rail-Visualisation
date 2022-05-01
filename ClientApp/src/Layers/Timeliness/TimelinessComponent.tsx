@@ -1,11 +1,11 @@
 ﻿import { FunctionComponent, ReactElement, useEffect, useState } from 'react';
-import { Menu, RouteSearch } from '../../Components';
-import { addToMap, centerMap, createRouteLine, fetchRoute, removeFromMap, useAppDispatch, useAppSelector } from '../../Utilities';
-import { IRouting, IRoutingItem, IAsyncRoutingItem, IStep } from '../../Interfaces';
-import { fetchLateness, updateLayer } from '../../Utilities/Timeliness';
 import { VectorLayer } from 'maptalks';
+
+import { Menu, RouteSearch } from '../../Components';
+import { addToMap, centerMap, fetchRoute, removeFromMap, useAppDispatch, useAppSelector } from '../../Utilities';
+import { IRouting, IAsyncRoutingItem } from '../../Interfaces';
+import { updateLayer } from '../../Utilities/Timeliness';
 import { createTimelinessLine } from '../../Utilities/Timeliness/timelinessCreateLine';
-import { DirectionsList } from '../Routing/DirectionsList';
 
 interface ITimelinessComponent {
     id: string,

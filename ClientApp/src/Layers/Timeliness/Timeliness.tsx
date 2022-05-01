@@ -1,11 +1,11 @@
 ﻿import { ReactElement } from 'react';
 import { VectorLayer } from 'maptalks';
-import { ILayer } from '../../Interfaces';
 
 import '../../Styles/Layers/Timeliness/Timeliness.css';
 import { TimelinessComponent } from './TimelinessComponent';
 import store from '../../Utilities/store';
 import { addLayer, removeLayer } from '../../Utilities/Timeliness';
+import { ILayer } from '../../Interfaces';
 
 export class Timeliness implements ILayer {
 

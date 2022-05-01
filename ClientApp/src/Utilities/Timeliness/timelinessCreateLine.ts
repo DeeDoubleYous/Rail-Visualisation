@@ -1,6 +1,4 @@
-﻿import { LineString } from 'maptalks';
-
-import { fetchLateness, getLatenessColour } from './';
+﻿import { fetchLateness, getLatenessColour } from './';
 import { createLine, decodePolyLine } from '../';
 import { IStep, ILeg, IRoutes } from '../../Interfaces';
 import { IAsyncRoutingItem } from '../../Interfaces/Layers/IAsyncRoutingItem';

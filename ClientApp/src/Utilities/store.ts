@@ -1,4 +1,5 @@
 ﻿import { configureStore } from '@reduxjs/toolkit';
+
 import routingReducer from './Routing/routingSlice';
 import timelinessReducer from './Timeliness/timelinessSlice';
 
