@@ -18,11 +18,11 @@ namespace RailVisualisation.Controllers
         }
 
         [HttpGet]
-        public async Task<string> Get(string origin, string destination, Int64 depature_time)
+        public async Task<string> Get(string origin, string destination, Int64 departure_time)
         {
             var key = System.Configuration.ConfigurationManager.AppSettings["apiKey"];
 
-            string directionsURL = $"{System.Configuration.ConfigurationManager.ConnectionStrings["directionsAPI"].ConnectionString}?key={key}&origin={origin}&destination={destination}&depature_time={depature_time}&mode=transit";
+            string directionsURL = $"{System.Configuration.ConfigurationManager.ConnectionStrings["directionsAPI"].ConnectionString}?key={key}&origin={origin}&destination={destination}&departure_time={departure_time}&mode=transit";
 
             try
             {
